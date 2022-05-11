@@ -2,16 +2,15 @@ baseurl: https://wwwCielwww.github.io
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: Example Site
+title: Ciel's blog website <3
 
 languages:
     en:
         languageName: English
-        title: Example Site
         weight: 1
     zh-cn:
         languageName: 中文
-        title: 演示站点
+        title: Ciel的博客网站
         weight: 2
     ar:
         languageName: عربي
@@ -61,7 +60,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/avatar.jpg
 
     article:
         math: false
