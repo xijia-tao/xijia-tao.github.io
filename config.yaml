@@ -19,6 +19,9 @@ languages:
         title: موقع تجريبي
         weight: 3
 
+# 生成网页保存在/docs子目录下
+publishDir: docs
+
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
