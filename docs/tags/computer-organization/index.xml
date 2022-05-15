@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Computer Organization on Ciel&#39;s blog website &lt;3</title>
+        <link>https://wwwCielwww.github.io/tags/computer-organization/</link>
+        <description>Recent content in Computer Organization on Ciel&#39;s blog website &lt;3</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/tags/computer-organization/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>COMP2120 Computer Organization Course Notes</title>
+        <link>https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/</link>
+        <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/</guid>
+        <description>&lt;p&gt;The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.&lt;/p&gt;
+&lt;h1 id=&#34;comp2120-notes&#34;&gt;COMP2120 Notes&lt;/h1&gt;
+&lt;h2 id=&#34;evolution&#34;&gt;Evolution&lt;/h2&gt;
+&lt;p&gt;Benchmarks: MIPS, MFLOPS; measure the time required to do some real jobs - SPECmarks&lt;/p&gt;
+&lt;h2 id=&#34;digital-logic&#34;&gt;Digital Logic&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;any logic expression can be written with only NAND or NOR
+&lt;ul&gt;
+&lt;li&gt;$\bar{A}\equiv A\text{ NAND } A$&lt;/li&gt;
+&lt;li&gt;$A.B\equiv \overline{A\text{ NAND } B}$&lt;/li&gt;
+&lt;li&gt;$A+B=\bar{A}\text{ NAND } \bar{B}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;minterm: AND of terms - exactly one 1 in its truth table&lt;/li&gt;
+&lt;li&gt;cpu any logic expression can be written as a sum of minterms (sum of products)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-gates.png&#34;
+	width=&#34;548&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-gates_hu7b93b990aa4f3dbbc173a355f34f861d_206331_480x0_resize_box_3.png 480w, https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-gates_hu7b93b990aa4f3dbbc173a355f34f861d_206331_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;219px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-circuit.png&#34;
+	width=&#34;919&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-circuit_hu28b9f45ba6e3dc5efad0acdb3e70b18e_121597_480x0_resize_box_3.png 480w, https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/logic-circuit_hu28b9f45ba6e3dc5efad0acdb3e70b18e_121597_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;number--arithmetic&#34;&gt;Number &amp;amp; Arithmetic&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;from radix 10: find all digits by repeated dividing the quotient by $r$
+&lt;ul&gt;
+&lt;li&gt;for fractional numbers, multiply by $r$ and get the integral part&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;between radix 2, 8 and 16: group by 3 (oct) or 4 (hex) binary digit together&lt;/li&gt;
+&lt;li&gt;represent ingsigned numbers
+&lt;ul&gt;
+&lt;li&gt;$f(\text{bit pattern}) = \text{value}$, where value can be positive, negative, char, etc.&lt;/li&gt;
+&lt;li&gt;excess $2^{m-1}$
+&lt;ul&gt;
+&lt;li&gt;divide the range into two halves&lt;/li&gt;
+&lt;li&gt;$\text{value}=\text{bit pattern}-(2^{m-1}-1)\in[-2^{m-1}+1,2^{m-1}]$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;one&amp;rsquo;s complement
+&lt;ul&gt;
+&lt;li&gt;+N= bit pattern, -N = inverting bit pattern of +N = $(2^n-1)-N\in[-2^{n-1}+1,2^{n-1}]$&lt;/li&gt;
+&lt;li&gt;-N&amp;rsquo;s bit pattern has MSB=1&lt;/li&gt;
+&lt;li&gt;problems: 2 zeros, arithmetic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;two&amp;rsquo;s complement
+&lt;ul&gt;
+&lt;li&gt;add 1 to negative bit pattern = $2^n-N\in[-2^{n-1},2^{n-1}-1]$&lt;/li&gt;
+&lt;li&gt;arithmetic: add together and discard any carry from the MSB&lt;/li&gt;
+&lt;li&gt;sign extension: add additional bit positions to the left and fill in with the value of the original sign bit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;floating point: sign S, biased exponent E, significand M (mantissa)
+&lt;ul&gt;
+&lt;li&gt;+ve/-ve overflow/underflow&lt;/li&gt;
+&lt;li&gt;actual value = $(-1)^S\times1.M\times2^{E-127}$ (single precision,  bit of exponent = 8)&lt;/li&gt;
+&lt;li&gt;not all can be represented precisely (e.g. 0.2), different order may yield different results&lt;/li&gt;
+&lt;li&gt;addition: right shift M of number with smaller E, normalize the result&lt;/li&gt;
+&lt;li&gt;multiplication: subtract bias in exponent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;multiplication of signed operand:
+&lt;ul&gt;
+&lt;li&gt;perform normal multiplication, except that if the partial sum is negative, need to sign-extend the number to
+become a negative double precision number. This is done except the sign bit.&lt;/li&gt;
+&lt;li&gt;If sign bit = 0, do nothing, else take complement of multiplicand and sign extend. Add this to the partial sum.&lt;/li&gt;
+&lt;li&gt;Ignore carry out during addition.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Adder:
+&lt;ul&gt;
+&lt;li&gt;half-adder (2 inputs, 2 outputs) full-adder (3 inputs, 2 outputs)&lt;/li&gt;
+&lt;li&gt;add n-bit numbers: ripple adder (slow), carry look-ahead adder, carry-save adder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;execution&#34;&gt;Execution&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2 basic cpu operations: data movement, data proccessing with ALU&lt;/li&gt;
+&lt;li&gt;an instruction is usually 32-bit (4 bytes) word&lt;/li&gt;
+&lt;li&gt;instruction fetch: MAR $\leftarrow$ PC; IR $\leftarrow$ mem[MAR]&lt;/li&gt;
+&lt;li&gt;operand fetch, execute **&lt;/li&gt;
+&lt;li&gt;interrupt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;memory&#34;&gt;Memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;RAM (the only volatile of all)
+&lt;ul&gt;
+&lt;li&gt;dynamic: transistors to store charges by capacitance effect, need refreshing, slower, 1 transistor per bit, much cheaper and hence more memory&lt;/li&gt;
+&lt;li&gt;static: logic gates to store data (latch), faster, used in cache memory&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ROM
+&lt;ul&gt;
+&lt;li&gt;ROM/PROM: cannot change content.&lt;/li&gt;
+&lt;li&gt;EPROM: content of entire chip can be erased by UV lights.&lt;/li&gt;
+&lt;li&gt;EEPROM: can be erased by using electric current (but slow)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Flash memory
+&lt;ul&gt;
+&lt;li&gt;faster than EEPROM in writing, used in handheld device/mobile phones&lt;/li&gt;
+&lt;li&gt;storing BIOS of PC, used as SSD, limited number of write cycles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;performance: access time, memory cycle time, transfer rate; throughput&lt;/li&gt;
+&lt;li&gt;memory byte ordering: big Endian (left-to-right) / little for multiple byte data&lt;/li&gt;
+&lt;li&gt;error detection: a single parity bit, chosen such that #1 in the bit pattern (inc itself) is even (even parity)&lt;/li&gt;
+&lt;li&gt;principle of locality: memory reference tends to be localized (e.g. code, small arrays, blocks of local variables in a subprogram)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cache&#34;&gt;Cache&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;mapping: 32-bit address [block id] [cache set no.] [offset in block]&lt;/li&gt;
+&lt;li&gt;e.g. 128kb cache memory, 2-way set associative, cache line (block) size = 64b
+&lt;ul&gt;
+&lt;li&gt;no. cache lines = 2048, no. sets = 1024&lt;/li&gt;
+&lt;li&gt;given address 346b2a70 (16, 10, 6 bits), set number = 10 bits = 169&lt;/li&gt;
+&lt;li&gt;matching id = 16 bits to match against the 2 tags in set number 169&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;direct-map organization (1 cache line)
+&lt;ul&gt;
+&lt;li&gt;pro: no need to perform selection (requires logic, logic gates need time to run), so faster&lt;/li&gt;
+&lt;li&gt;con: multiple memory blocks mapped to the same cache set, maybe needed by the running program at the same time (i.e. code and data) hence result in many cache misses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;k-way set associative: need to compare the tags of cache lines with the block-id of the address&lt;/li&gt;
+&lt;li&gt;replacement: FIFO, LRU&lt;/li&gt;
+&lt;li&gt;write: need to maintain data consistency between cache and main memory
+&lt;ul&gt;
+&lt;li&gt;write through: when writing cache, also write main memory
+&lt;ul&gt;
+&lt;li&gt;difficult to manage when need to access memory (e.g. cache miss) if the previous write has not finished yet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;write back: write back only when it is replaced
+&lt;ul&gt;
+&lt;li&gt;inconsistent $\to$ difficult to manage when need I/O operation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;unified cache: memory contention problem on parallel and pipeline execution of instructions&lt;/li&gt;
+&lt;li&gt;e.g. 512 words cache, 2-way, block size = 64, LRU, cache hit time = 10ns, 4 words in parallel, burst mode: first 4 words 60ns, subsequent 4 words 12ns, each block 24 references on avg
+&lt;ul&gt;
+&lt;li&gt;miss penalty = 60 + 15 * 12 = 240ns; no. blocks = 8; no. sets = 4&lt;/li&gt;
+&lt;li&gt;0 1 2 5 3 2 5 3 11 7 9 0 6 0 7 9 8 7 9 11 12 2 4 5 12 15 12 13 15&lt;/li&gt;
+&lt;li&gt;final content: &lt;code&gt;[[12,4],[13,5],[2,6],[15,11]]&lt;/code&gt; total cache misses = 14&lt;/li&gt;
+&lt;li&gt;no. blocks accessed = 29; no. memory access = 29 x 24 = 696&lt;/li&gt;
+&lt;li&gt;cache hit rate = 1 - 14/696 = 97.88% avg access time = 14.8ns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;external&#34;&gt;External&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;magnetic disks&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;platters, which have circular tracks, which have sectors&lt;/li&gt;
+&lt;li&gt;synch byte (id, data), information, crc (error detection)&lt;/li&gt;
+&lt;li&gt;all the r/w head moves together; tracks of different platter under the head -&amp;gt; cylinder&lt;/li&gt;
+&lt;li&gt;access time: (a) seek: move head from one cylinder to another (b) rotational delay: avg latency = half a revolution (c) data transfer time &amp;laquo; seek + latency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;RAID: redundant array disks, appeared as a single hard disk to the system, allow parallel op&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;efficient for block, nonredundant &lt;code&gt;[[0,4,8],[1,5,9],[2,6,10],[3,7,11]]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;duplicate (mirrored), fault tolerant, either copy can be used during reading, hence reduced seek time&lt;/li&gt;
+&lt;li&gt;hamming code in extra HDDs, expensive&lt;/li&gt;
+&lt;li&gt;extra HDD contains parity bit, easily reconstruct the content of one failed HDD&lt;/li&gt;
+&lt;li&gt;block level parity&lt;/li&gt;
+&lt;li&gt;block level distributed parity, commonly used in NAS&lt;/li&gt;
+&lt;li&gt;level 5 with 2 parity strips calculated using different method&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;solid state drives: limited number of write cycles; advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;high-performance i/o, durability - less susceptible to physical shock and libration&lt;/li&gt;
+&lt;li&gt;longer lifespan and lower power consumption since no mechanical&lt;/li&gt;
+&lt;li&gt;quieter and cooler operation; lower access time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;io&#34;&gt;I/O&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;asynchronous communication as large speed variation&lt;/li&gt;
+&lt;li&gt;cpu controls the operation of the io devices by w/r the data and status/control registers&lt;/li&gt;
+&lt;li&gt;dedicated io ports if io instructions provided in cpu / more often in memory map&lt;/li&gt;
+&lt;li&gt;programmed io: cpu-&amp;gt;io, io-&amp;gt;cpu repeatedly until, io-&amp;gt;cpu, cpu-&amp;gt;memory&lt;/li&gt;
+&lt;li&gt;interrupt-driven io: issue command, continue, io interrupt when it finishes, suspend, execute, return
+&lt;ul&gt;
+&lt;li&gt;interrupt: put PC, flag registers and other registers used into the stack (in memory); restore with return&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;dma: minimize cpu intervention with intelligent device controller (io processor)
+&lt;ul&gt;
+&lt;li&gt;when cpu and io processor want to write to memory at the same time&lt;/li&gt;
+&lt;li&gt;steal cycles: io issues signal to tell cpu to disconnect from buses, which io then controls&lt;/li&gt;
+&lt;li&gt;cpu will see an elongated clock, in which io r/w the memory&lt;/li&gt;
+&lt;li&gt;when finishes, remove the signal and the clock returns to normal&lt;/li&gt;
+&lt;li&gt;note that it causes cpu to execute at a slower rate; io notifies cpu by the end of an entire io operation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;instruction&#34;&gt;Instruction&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/address-mode.png&#34;
+	width=&#34;710&#34;
+	height=&#34;332&#34;
+	srcset=&#34;https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/address-mode_hu028d5edb0ae5d26b5aa7ba1211ae7e1d_320435_480x0_resize_box_3.png 480w, https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/address-mode_hu028d5edb0ae5d26b5aa7ba1211ae7e1d_320435_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;XOR R1,R1,R1 ;init R1 to 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MOV #A,R2 ;R2=addr of array A
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MOV #1024,R3 ;R3=size of array
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LOOP: ADD R1,(R2),R1 ;R1=R1+(R2)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ADD R2,#4,R2 ;incr R2 to next elt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SUB R3,#1,R3 ;decrement R3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BNE LOOP ;if result!=0 branch
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;XOR R2,R2,R2 ; init R2=0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MOV #1024, R3 ; init R3=size
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;LOOP: MOV A(R2), R4 ; A=start addr of A[]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MOV B(R2), R5 ; B=start addr of B[]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OR R4, R5, R6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;MOV R6, A(R2)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ADD R2,#4,R2 ; increase R2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SUB R3,#1,R3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;BNE LOOP
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;alp&#34;&gt;ALP&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.data
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a: .asciiz &amp;#34;This is a test&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# zero-terminated string
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.text
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;main: sub r9,r9,r9 # r9=0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;loop: lb a(r9),r10 # load byte
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;beq r10,#0,exit # r10==0? end of string
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;call capitalize # call capitalize
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sb r10, a(r9) # store result back
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;add r9,1,r9 # incr r9, next char
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;br loop # goto loop
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;exit: ret # return
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Capitalize:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;push r8; push r9
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ld #0x61,r8 #r8=’a’
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ld #0x7a,r9 #r9=’z’
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;blt r10,r8,ret1; bgt r10,r9,ret1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sub r10,#0x20,r10 #0x20=’a’-’A’
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ret1: pop r9; pop r8; ret 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;os is a software that controls the execution of programs on a processor and manages the processor’s resources.&lt;/li&gt;
+&lt;li&gt;user interface: cmi, program execution, file manipulation&lt;/li&gt;
+&lt;li&gt;interface to programs: os calls (special instructions) e.g. file open/close, r/w&lt;/li&gt;
+&lt;li&gt;services provided by os: program creation &amp;amp; execution, io access, file system management, system access, error detection and response, accounting&lt;/li&gt;
+&lt;li&gt;protection scheme: user &amp;amp; kernel mode; system has to change to kernel mode to run/use the protected resources. OS functions accessed via system calls (special entry points)&lt;/li&gt;
+&lt;li&gt;cpu multitasking e.g. perform io, stop execution, next; queue of processes (many factors)&lt;/li&gt;
+&lt;li&gt;mapping from logical addresses of programs to physical addresses of memory, done by MMU&lt;/li&gt;
+&lt;li&gt;paging: logical &amp;amp; physical -&amp;gt; pages, each process own logical ~ and page table (map)
+&lt;ul&gt;
+&lt;li&gt;each pte contains v(in memory or not), p(protection mode), d(if page been changed)&lt;/li&gt;
+&lt;li&gt;table cached in tlb; MMU performs address translation &amp;amp; protection checking (e.g. fetch required page from hard disk to memory and restart program)&lt;/li&gt;
+&lt;li&gt;when program starts, nothing in memory -&amp;gt; many page faults at start until a stable working set, use prepaging to bring in some pages at start&lt;/li&gt;
+&lt;li&gt;address translation: (a) extract logical page no. (most sig n-bits); (b) find corre pte and see if page is in physical memory; (c) yes then get frame no. &amp;amp; append offset; no then page fault&lt;/li&gt;
+&lt;li&gt;fault handling: (a) page from hard disk (b) find a free page in physical / replace (c) if dirty then write back (d) invalid that pte (e) write the page to that physical page (f) modify its pte&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;cache + vm: address translation via tlb, the cache of page table
+&lt;ul&gt;
+&lt;li&gt;if pte not in tlb, then use the page table and put it into tlb&lt;/li&gt;
+&lt;li&gt;obtain the physical address; use it to access cache memory; cache miss handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;processor&#34;&gt;Processor&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;to generate control signals&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hardwired*: logic gates designed with truth table, faster, simpler instruction set&lt;/li&gt;
+&lt;li&gt;microprogrammed: signals and truth table stored in memory, simple design, easy to modify&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;3 stages instruction execution cycle:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fetch instruction&lt;/li&gt;
+&lt;li&gt;decode instruction&lt;/li&gt;
+&lt;li&gt;instruction execution: calculate operand addresses*
+&lt;ul&gt;
+&lt;li&gt;fetch operands from registers/memory; execute instruction*; write operand&lt;/li&gt;
+&lt;li&gt;*can be combined as ld/st do not need to &amp;ldquo;execute&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;e.g. ADD A, B, C absolute addressing -&amp;gt; 4 words, read next word to get address&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pipeline: increase the throughput&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;branch/interrupt -&amp;gt; update pc and empty pipe&lt;/li&gt;
+&lt;li&gt;no CO stage -&amp;gt; 5-stage pipeline&lt;/li&gt;
+&lt;li&gt;resources required by each stages should not overlap, otherwise duplicate resources needed: e.g.
+&lt;ul&gt;
+&lt;li&gt;dedicated incrementer for PC instead of using ALU; multiple internal buses&lt;/li&gt;
+&lt;li&gt;separate read port for data and instruction, or separate instruction and data cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for an ideal pipeline, each instruction 5 stages 5 clock cycles, throughput = 1 instruction/clock cycle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pipeline hazards: situations that prevent the next instruction from entering pipeline&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;resource hazard: conflict, e.g. PC inc and ALU operation; two multiply&lt;/li&gt;
+&lt;li&gt;data hazard: data dependency on the result of previous instructions
+&lt;ul&gt;
+&lt;li&gt;re-arrange if possible: insert instructions in between; data forwarding&lt;/li&gt;
+&lt;li&gt;only RAW types occur in a pipeline; others occur in parallel systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;control hazard: branch, call, etc. don&amp;rsquo;t know where to continue until it finishes
+&lt;ul&gt;
+&lt;li&gt;branch prediction: continue execution only 1 of 2 paths, correct prob = 50%&lt;/li&gt;
+&lt;li&gt;can always write back to register/memory if wrong; higher prob for for-loop&lt;/li&gt;
+&lt;li&gt;dynamic branch prediction: change decision when 2 consecutive wrong predictions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;performance: execution time = instruction cnt x cpi x clock cycle time&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;more effective pipelining -&amp;gt; higher throughput -&amp;gt; smaller cpi&lt;/li&gt;
+&lt;li&gt;multiple instruction execution unit; large register file -&amp;gt; reduce memory access -&amp;gt;higher speed&lt;/li&gt;
+&lt;li&gt;simplified instruction set -&amp;gt; reduce the need for microprograms, which is slower than hardware&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;modern processors: register-register except ld and st;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;fixed length and simple, fixed format instructions;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;few operations and addressing modes, simple cpu -&amp;gt; simple implementation -&amp;gt; faster clock rate, more efficient pipeline as less cases to consider&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;hardwired instead of microprog control; eliminate effect of pipeline hazards with soft &amp;amp; hardwares&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;rely on optimizing compiler to enhance system performance, e.g. register allocation&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
 title: COMP3270 Artificial Intelligence Course Notes
 date: 2022-05-11
-categories: "Artificial Intelligence"
+categories: ["Course Notes", "Artificial Intelligence"]
 math: true
 ---
 

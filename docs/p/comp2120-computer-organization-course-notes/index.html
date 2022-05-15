@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.
+COMP2120 Notes Evolution Benchmarks: MIPS, MFLOPS; measure the time required to do some real jobs - SPECmarks
+Digital Logic  any logic expression can be written with only NAND or NOR  $\bar{A}\equiv A\text{ NAND } A$ $A.'><title>COMP2120 Computer Organization Course Notes</title>
+
+<link rel='canonical' href='https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/'>
+
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='COMP2120 Computer Organization Course Notes'>
+<meta property='og:description' content='The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.
+COMP2120 Notes Evolution Benchmarks: MIPS, MFLOPS; measure the time required to do some real jobs - SPECmarks
+Digital Logic  any logic expression can be written with only NAND or NOR  $\bar{A}\equiv A\text{ NAND } A$ $A.'>
+<meta property='og:url' content='https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/'>
+<meta property='og:site_name' content='Ciel&#39;s blog website &lt;3'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Computer Organization' /><meta property='article:published_time' content='2022-05-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-05-15T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="COMP2120 Computer Organization Course Notes">
+<meta name="twitter:description" content="The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.
+COMP2120 Notes Evolution Benchmarks: MIPS, MFLOPS; measure the time required to do some real jobs - SPECmarks
+Digital Logic  any logic expression can be written with only NAND or NOR  $\bar{A}\equiv A\text{ NAND } A$ $A.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu26fd8464577ab2cf0412db6fc5fa2810_806527_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Ciel&#39;s blog website &lt;3</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://wwwCielwww.github.io/" selected>English</option>
+                        
+                            <option value="https://wwwCielwww.github.io/zh-cn/" >中文</option>
+                        
+                            <option value="https://wwwCielwww.github.io/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/course-notes/" >
+                Course Notes
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/comp2120-computer-organization-course-notes/">COMP2120 Computer Organization Course Notes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.</p>
+<h1 id="comp2120-notes">COMP2120 Notes</h1>
+<h2 id="evolution">Evolution</h2>
+<p>Benchmarks: MIPS, MFLOPS; measure the time required to do some real jobs - SPECmarks</p>
+<h2 id="digital-logic">Digital Logic</h2>
+<ol>
+<li>any logic expression can be written with only NAND or NOR
+<ul>
+<li>$\bar{A}\equiv A\text{ NAND } A$</li>
+<li>$A.B\equiv \overline{A\text{ NAND } B}$</li>
+<li>$A+B=\bar{A}\text{ NAND } \bar{B}$</li>
+</ul>
+</li>
+<li>minterm: AND of terms - exactly one 1 in its truth table</li>
+<li>cpu any logic expression can be written as a sum of minterms (sum of products)</li>
+</ol>
+<p><img src="/p/comp2120-computer-organization-course-notes/logic-gates.png"
+	width="548"
+	height="600"
+	srcset="/p/comp2120-computer-organization-course-notes/logic-gates_hu7b93b990aa4f3dbbc173a355f34f861d_206331_480x0_resize_box_3.png 480w, /p/comp2120-computer-organization-course-notes/logic-gates_hu7b93b990aa4f3dbbc173a355f34f861d_206331_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="91"
+		data-flex-basis="219px"
+	
+></p>
+<p><img src="/p/comp2120-computer-organization-course-notes/logic-circuit.png"
+	width="919"
+	height="602"
+	srcset="/p/comp2120-computer-organization-course-notes/logic-circuit_hu28b9f45ba6e3dc5efad0acdb3e70b18e_121597_480x0_resize_box_3.png 480w, /p/comp2120-computer-organization-course-notes/logic-circuit_hu28b9f45ba6e3dc5efad0acdb3e70b18e_121597_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="366px"
+	
+></p>
+<h2 id="number--arithmetic">Number &amp; Arithmetic</h2>
+<ol>
+<li>from radix 10: find all digits by repeated dividing the quotient by $r$
+<ul>
+<li>for fractional numbers, multiply by $r$ and get the integral part</li>
+</ul>
+</li>
+<li>between radix 2, 8 and 16: group by 3 (oct) or 4 (hex) binary digit together</li>
+<li>represent ingsigned numbers
+<ul>
+<li>$f(\text{bit pattern}) = \text{value}$, where value can be positive, negative, char, etc.</li>
+<li>excess $2^{m-1}$
+<ul>
+<li>divide the range into two halves</li>
+<li>$\text{value}=\text{bit pattern}-(2^{m-1}-1)\in[-2^{m-1}+1,2^{m-1}]$</li>
+</ul>
+</li>
+<li>one&rsquo;s complement
+<ul>
+<li>+N= bit pattern, -N = inverting bit pattern of +N = $(2^n-1)-N\in[-2^{n-1}+1,2^{n-1}]$</li>
+<li>-N&rsquo;s bit pattern has MSB=1</li>
+<li>problems: 2 zeros, arithmetic</li>
+</ul>
+</li>
+<li>two&rsquo;s complement
+<ul>
+<li>add 1 to negative bit pattern = $2^n-N\in[-2^{n-1},2^{n-1}-1]$</li>
+<li>arithmetic: add together and discard any carry from the MSB</li>
+<li>sign extension: add additional bit positions to the left and fill in with the value of the original sign bit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>floating point: sign S, biased exponent E, significand M (mantissa)
+<ul>
+<li>+ve/-ve overflow/underflow</li>
+<li>actual value = $(-1)^S\times1.M\times2^{E-127}$ (single precision,  bit of exponent = 8)</li>
+<li>not all can be represented precisely (e.g. 0.2), different order may yield different results</li>
+<li>addition: right shift M of number with smaller E, normalize the result</li>
+<li>multiplication: subtract bias in exponent</li>
+</ul>
+</li>
+<li>multiplication of signed operand:
+<ul>
+<li>perform normal multiplication, except that if the partial sum is negative, need to sign-extend the number to
+become a negative double precision number. This is done except the sign bit.</li>
+<li>If sign bit = 0, do nothing, else take complement of multiplicand and sign extend. Add this to the partial sum.</li>
+<li>Ignore carry out during addition.</li>
+</ul>
+</li>
+<li>Adder:
+<ul>
+<li>half-adder (2 inputs, 2 outputs) full-adder (3 inputs, 2 outputs)</li>
+<li>add n-bit numbers: ripple adder (slow), carry look-ahead adder, carry-save adder</li>
+</ul>
+</li>
+</ol>
+<h2 id="execution">Execution</h2>
+<ul>
+<li>2 basic cpu operations: data movement, data proccessing with ALU</li>
+<li>an instruction is usually 32-bit (4 bytes) word</li>
+<li>instruction fetch: MAR $\leftarrow$ PC; IR $\leftarrow$ mem[MAR]</li>
+<li>operand fetch, execute **</li>
+<li>interrupt</li>
+</ul>
+<h2 id="memory">Memory</h2>
+<ul>
+<li>RAM (the only volatile of all)
+<ul>
+<li>dynamic: transistors to store charges by capacitance effect, need refreshing, slower, 1 transistor per bit, much cheaper and hence more memory</li>
+<li>static: logic gates to store data (latch), faster, used in cache memory</li>
+</ul>
+</li>
+<li>ROM
+<ul>
+<li>ROM/PROM: cannot change content.</li>
+<li>EPROM: content of entire chip can be erased by UV lights.</li>
+<li>EEPROM: can be erased by using electric current (but slow)</li>
+</ul>
+</li>
+<li>Flash memory
+<ul>
+<li>faster than EEPROM in writing, used in handheld device/mobile phones</li>
+<li>storing BIOS of PC, used as SSD, limited number of write cycles</li>
+</ul>
+</li>
+<li>performance: access time, memory cycle time, transfer rate; throughput</li>
+<li>memory byte ordering: big Endian (left-to-right) / little for multiple byte data</li>
+<li>error detection: a single parity bit, chosen such that #1 in the bit pattern (inc itself) is even (even parity)</li>
+<li>principle of locality: memory reference tends to be localized (e.g. code, small arrays, blocks of local variables in a subprogram)</li>
+</ul>
+<h2 id="cache">Cache</h2>
+<ol>
+<li>mapping: 32-bit address [block id] [cache set no.] [offset in block]</li>
+<li>e.g. 128kb cache memory, 2-way set associative, cache line (block) size = 64b
+<ul>
+<li>no. cache lines = 2048, no. sets = 1024</li>
+<li>given address 346b2a70 (16, 10, 6 bits), set number = 10 bits = 169</li>
+<li>matching id = 16 bits to match against the 2 tags in set number 169</li>
+</ul>
+</li>
+<li>direct-map organization (1 cache line)
+<ul>
+<li>pro: no need to perform selection (requires logic, logic gates need time to run), so faster</li>
+<li>con: multiple memory blocks mapped to the same cache set, maybe needed by the running program at the same time (i.e. code and data) hence result in many cache misses</li>
+</ul>
+</li>
+<li>k-way set associative: need to compare the tags of cache lines with the block-id of the address</li>
+<li>replacement: FIFO, LRU</li>
+<li>write: need to maintain data consistency between cache and main memory
+<ul>
+<li>write through: when writing cache, also write main memory
+<ul>
+<li>difficult to manage when need to access memory (e.g. cache miss) if the previous write has not finished yet</li>
+</ul>
+</li>
+<li>write back: write back only when it is replaced
+<ul>
+<li>inconsistent $\to$ difficult to manage when need I/O operation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>unified cache: memory contention problem on parallel and pipeline execution of instructions</li>
+<li>e.g. 512 words cache, 2-way, block size = 64, LRU, cache hit time = 10ns, 4 words in parallel, burst mode: first 4 words 60ns, subsequent 4 words 12ns, each block 24 references on avg
+<ul>
+<li>miss penalty = 60 + 15 * 12 = 240ns; no. blocks = 8; no. sets = 4</li>
+<li>0 1 2 5 3 2 5 3 11 7 9 0 6 0 7 9 8 7 9 11 12 2 4 5 12 15 12 13 15</li>
+<li>final content: <code>[[12,4],[13,5],[2,6],[15,11]]</code> total cache misses = 14</li>
+<li>no. blocks accessed = 29; no. memory access = 29 x 24 = 696</li>
+<li>cache hit rate = 1 - 14/696 = 97.88% avg access time = 14.8ns</li>
+</ul>
+</li>
+</ol>
+<h2 id="external">External</h2>
+<ol>
+<li>
+<p>magnetic disks</p>
+<ul>
+<li>platters, which have circular tracks, which have sectors</li>
+<li>synch byte (id, data), information, crc (error detection)</li>
+<li>all the r/w head moves together; tracks of different platter under the head -&gt; cylinder</li>
+<li>access time: (a) seek: move head from one cylinder to another (b) rotational delay: avg latency = half a revolution (c) data transfer time &laquo; seek + latency</li>
+</ul>
+</li>
+<li>
+<p>RAID: redundant array disks, appeared as a single hard disk to the system, allow parallel op</p>
+<ol>
+<li>efficient for block, nonredundant <code>[[0,4,8],[1,5,9],[2,6,10],[3,7,11]]</code></li>
+<li>duplicate (mirrored), fault tolerant, either copy can be used during reading, hence reduced seek time</li>
+<li>hamming code in extra HDDs, expensive</li>
+<li>extra HDD contains parity bit, easily reconstruct the content of one failed HDD</li>
+<li>block level parity</li>
+<li>block level distributed parity, commonly used in NAS</li>
+<li>level 5 with 2 parity strips calculated using different method</li>
+</ol>
+</li>
+<li>
+<p>solid state drives: limited number of write cycles; advantages:</p>
+<ul>
+<li>high-performance i/o, durability - less susceptible to physical shock and libration</li>
+<li>longer lifespan and lower power consumption since no mechanical</li>
+<li>quieter and cooler operation; lower access time</li>
+</ul>
+</li>
+</ol>
+<h2 id="io">I/O</h2>
+<ol>
+<li>asynchronous communication as large speed variation</li>
+<li>cpu controls the operation of the io devices by w/r the data and status/control registers</li>
+<li>dedicated io ports if io instructions provided in cpu / more often in memory map</li>
+<li>programmed io: cpu-&gt;io, io-&gt;cpu repeatedly until, io-&gt;cpu, cpu-&gt;memory</li>
+<li>interrupt-driven io: issue command, continue, io interrupt when it finishes, suspend, execute, return
+<ul>
+<li>interrupt: put PC, flag registers and other registers used into the stack (in memory); restore with return</li>
+</ul>
+</li>
+<li>dma: minimize cpu intervention with intelligent device controller (io processor)
+<ul>
+<li>when cpu and io processor want to write to memory at the same time</li>
+<li>steal cycles: io issues signal to tell cpu to disconnect from buses, which io then controls</li>
+<li>cpu will see an elongated clock, in which io r/w the memory</li>
+<li>when finishes, remove the signal and the clock returns to normal</li>
+<li>note that it causes cpu to execute at a slower rate; io notifies cpu by the end of an entire io operation</li>
+</ul>
+</li>
+</ol>
+<h2 id="instruction">Instruction</h2>
+<p><img src="/p/comp2120-computer-organization-course-notes/address-mode.png"
+	width="710"
+	height="332"
+	srcset="/p/comp2120-computer-organization-course-notes/address-mode_hu028d5edb0ae5d26b5aa7ba1211ae7e1d_320435_480x0_resize_box_3.png 480w, /p/comp2120-computer-organization-course-notes/address-mode_hu028d5edb0ae5d26b5aa7ba1211ae7e1d_320435_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="513px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">XOR R1,R1,R1 ;init R1 to 0
+</span></span><span class="line"><span class="cl">MOV #A,R2 ;R2=addr of array A
+</span></span><span class="line"><span class="cl">MOV #1024,R3 ;R3=size of array
+</span></span><span class="line"><span class="cl">LOOP: ADD R1,(R2),R1 ;R1=R1+(R2)
+</span></span><span class="line"><span class="cl">ADD R2,#4,R2 ;incr R2 to next elt
+</span></span><span class="line"><span class="cl">SUB R3,#1,R3 ;decrement R3
+</span></span><span class="line"><span class="cl">BNE LOOP ;if result!=0 branch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">XOR R2,R2,R2 ; init R2=0
+</span></span><span class="line"><span class="cl">MOV #1024, R3 ; init R3=size
+</span></span><span class="line"><span class="cl">LOOP: MOV A(R2), R4 ; A=start addr of A[]
+</span></span><span class="line"><span class="cl">MOV B(R2), R5 ; B=start addr of B[]
+</span></span><span class="line"><span class="cl">OR R4, R5, R6
+</span></span><span class="line"><span class="cl">MOV R6, A(R2)
+</span></span><span class="line"><span class="cl">ADD R2,#4,R2 ; increase R2
+</span></span><span class="line"><span class="cl">SUB R3,#1,R3
+</span></span><span class="line"><span class="cl">BNE LOOP
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="alp">ALP</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.data
+</span></span><span class="line"><span class="cl">a: .asciiz &#34;This is a test&#34;
+</span></span><span class="line"><span class="cl"># zero-terminated string
+</span></span><span class="line"><span class="cl">.text
+</span></span><span class="line"><span class="cl">main: sub r9,r9,r9 # r9=0
+</span></span><span class="line"><span class="cl">loop: lb a(r9),r10 # load byte
+</span></span><span class="line"><span class="cl">beq r10,#0,exit # r10==0? end of string
+</span></span><span class="line"><span class="cl">call capitalize # call capitalize
+</span></span><span class="line"><span class="cl">sb r10, a(r9) # store result back
+</span></span><span class="line"><span class="cl">add r9,1,r9 # incr r9, next char
+</span></span><span class="line"><span class="cl">br loop # goto loop
+</span></span><span class="line"><span class="cl">exit: ret # return
+</span></span><span class="line"><span class="cl">Capitalize:
+</span></span><span class="line"><span class="cl">push r8; push r9
+</span></span><span class="line"><span class="cl">ld #0x61,r8 #r8=’a’
+</span></span><span class="line"><span class="cl">ld #0x7a,r9 #r9=’z’
+</span></span><span class="line"><span class="cl">blt r10,r8,ret1; bgt r10,r9,ret1
+</span></span><span class="line"><span class="cl">sub r10,#0x20,r10 #0x20=’a’-’A’
+</span></span><span class="line"><span class="cl">ret1: pop r9; pop r8; ret 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="os">OS</h2>
+<ol>
+<li>os is a software that controls the execution of programs on a processor and manages the processor’s resources.</li>
+<li>user interface: cmi, program execution, file manipulation</li>
+<li>interface to programs: os calls (special instructions) e.g. file open/close, r/w</li>
+<li>services provided by os: program creation &amp; execution, io access, file system management, system access, error detection and response, accounting</li>
+<li>protection scheme: user &amp; kernel mode; system has to change to kernel mode to run/use the protected resources. OS functions accessed via system calls (special entry points)</li>
+<li>cpu multitasking e.g. perform io, stop execution, next; queue of processes (many factors)</li>
+<li>mapping from logical addresses of programs to physical addresses of memory, done by MMU</li>
+<li>paging: logical &amp; physical -&gt; pages, each process own logical ~ and page table (map)
+<ul>
+<li>each pte contains v(in memory or not), p(protection mode), d(if page been changed)</li>
+<li>table cached in tlb; MMU performs address translation &amp; protection checking (e.g. fetch required page from hard disk to memory and restart program)</li>
+<li>when program starts, nothing in memory -&gt; many page faults at start until a stable working set, use prepaging to bring in some pages at start</li>
+<li>address translation: (a) extract logical page no. (most sig n-bits); (b) find corre pte and see if page is in physical memory; (c) yes then get frame no. &amp; append offset; no then page fault</li>
+<li>fault handling: (a) page from hard disk (b) find a free page in physical / replace (c) if dirty then write back (d) invalid that pte (e) write the page to that physical page (f) modify its pte</li>
+</ul>
+</li>
+<li>cache + vm: address translation via tlb, the cache of page table
+<ul>
+<li>if pte not in tlb, then use the page table and put it into tlb</li>
+<li>obtain the physical address; use it to access cache memory; cache miss handling</li>
+</ul>
+</li>
+</ol>
+<h2 id="processor">Processor</h2>
+<ol>
+<li>
+<p>to generate control signals</p>
+<ul>
+<li>hardwired*: logic gates designed with truth table, faster, simpler instruction set</li>
+<li>microprogrammed: signals and truth table stored in memory, simple design, easy to modify</li>
+</ul>
+</li>
+<li>
+<p>3 stages instruction execution cycle:</p>
+<ul>
+<li>fetch instruction</li>
+<li>decode instruction</li>
+<li>instruction execution: calculate operand addresses*
+<ul>
+<li>fetch operands from registers/memory; execute instruction*; write operand</li>
+<li>*can be combined as ld/st do not need to &ldquo;execute&rdquo;</li>
+</ul>
+</li>
+<li>e.g. ADD A, B, C absolute addressing -&gt; 4 words, read next word to get address</li>
+</ul>
+</li>
+<li>
+<p>pipeline: increase the throughput</p>
+<ul>
+<li>branch/interrupt -&gt; update pc and empty pipe</li>
+<li>no CO stage -&gt; 5-stage pipeline</li>
+<li>resources required by each stages should not overlap, otherwise duplicate resources needed: e.g.
+<ul>
+<li>dedicated incrementer for PC instead of using ALU; multiple internal buses</li>
+<li>separate read port for data and instruction, or separate instruction and data cache</li>
+</ul>
+</li>
+<li>for an ideal pipeline, each instruction 5 stages 5 clock cycles, throughput = 1 instruction/clock cycle</li>
+</ul>
+</li>
+<li>
+<p>pipeline hazards: situations that prevent the next instruction from entering pipeline</p>
+<ul>
+<li>resource hazard: conflict, e.g. PC inc and ALU operation; two multiply</li>
+<li>data hazard: data dependency on the result of previous instructions
+<ul>
+<li>re-arrange if possible: insert instructions in between; data forwarding</li>
+<li>only RAW types occur in a pipeline; others occur in parallel systems</li>
+</ul>
+</li>
+<li>control hazard: branch, call, etc. don&rsquo;t know where to continue until it finishes
+<ul>
+<li>branch prediction: continue execution only 1 of 2 paths, correct prob = 50%</li>
+<li>can always write back to register/memory if wrong; higher prob for for-loop</li>
+<li>dynamic branch prediction: change decision when 2 consecutive wrong predictions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>performance: execution time = instruction cnt x cpi x clock cycle time</p>
+<ul>
+<li>more effective pipelining -&gt; higher throughput -&gt; smaller cpi</li>
+<li>multiple instruction execution unit; large register file -&gt; reduce memory access -&gt;higher speed</li>
+<li>simplified instruction set -&gt; reduce the need for microprograms, which is slower than hardware</li>
+</ul>
+</li>
+<li>
+<p>modern processors: register-register except ld and st;</p>
+<ul>
+<li>
+<p>fixed length and simple, fixed format instructions;</p>
+</li>
+<li>
+<p>few operations and addressing modes, simple cpu -&gt; simple implementation -&gt; faster clock rate, more efficient pipeline as less cases to consider</p>
+</li>
+<li>
+<p>hardwired instead of microprog control; eliminate effect of pipeline hazards with soft &amp; hardwares</p>
+</li>
+<li>
+<p>rely on optimizing compiler to enhance system performance, e.g. register allocation</p>
+</li>
+</ul>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/computer-organization/">Computer Organization</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">Related contents</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/comp3270-artificial-intelligence-course-notes/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">COMP3270 Artificial Intelligence Course Notes</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Ciel&#39;s blog website &lt;3
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#evolution">Evolution</a></li>
+    <li><a href="#digital-logic">Digital Logic</a></li>
+    <li><a href="#number--arithmetic">Number &amp; Arithmetic</a></li>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#memory">Memory</a></li>
+    <li><a href="#cache">Cache</a></li>
+    <li><a href="#external">External</a></li>
+    <li><a href="#io">I/O</a></li>
+    <li><a href="#instruction">Instruction</a></li>
+    <li><a href="#alp">ALP</a></li>
+    <li><a href="#os">OS</a></li>
+    <li><a href="#processor">Processor</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
