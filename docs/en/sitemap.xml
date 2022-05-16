@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://wwwCielwww.github.io/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -20,8 +20,11 @@
                 href="https://wwwCielwww.github.io/"
                 />
   </url><url>
+    <loc>https://wwwCielwww.github.io/tags/animation/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/categories/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -38,17 +41,14 @@
                 href="https://wwwCielwww.github.io/categories/"
                 />
   </url><url>
-    <loc>https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://wwwCielwww.github.io/tags/computer-organization/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <loc>https://wwwCielwww.github.io/p/comp3360-computer-animation-course-notes/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/categories/course-notes/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/post/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -66,7 +66,7 @@
                 />
   </url><url>
     <loc>https://wwwCielwww.github.io/tags/</loc>
-    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -82,6 +82,12 @@
                 hreflang="en"
                 href="https://wwwCielwww.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://wwwCielwww.github.io/p/comp2120-computer-organization-course-notes/</loc>
+    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/tags/computer-organization/</loc>
+    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/categories/artificial-intelligence/</loc>
     <lastmod>2022-05-11T00:00:00+00:00</lastmod>
