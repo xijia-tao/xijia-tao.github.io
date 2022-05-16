@@ -168,12 +168,16 @@
 &lt;li&gt;geometry and texture data, fit a generic face mesh into the range data using feature points&lt;/li&gt;
 &lt;li&gt;skin, fat, muscles: mass-spring, need to preserve volume - push node upwards&lt;/li&gt;
 &lt;li&gt;animation: with anatomical model, muscles activated to overlap markers&lt;/li&gt;
-&lt;li&gt;cons of musculoskeletal model: quality depends on model (muscle details, soft materials, muscle activation); below: expression cloning, cal corr with RBF&lt;img src=&#34;https://wwwCielwww.github.io/express-clone.png&#34;
-	
-	
-	
+&lt;li&gt;cons of musculoskeletal model: quality depends on model (muscle details, soft materials, muscle activation); below: expression cloning, cal corr with RBF&lt;img src=&#34;https://wwwCielwww.github.io/p/comp3360-computer-animation-course-notes/express-clone.png&#34;
+	width=&#34;638&#34;
+	height=&#34;466&#34;
+	srcset=&#34;https://wwwCielwww.github.io/p/comp3360-computer-animation-course-notes/express-clone_hu13b24fb2d0bebbb768444094c4810f7b_64474_480x0_resize_box_3.png 480w, https://wwwCielwww.github.io/p/comp3360-computer-animation-course-notes/express-clone_hu13b24fb2d0bebbb768444094c4810f7b_64474_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
 	
 &gt;&lt;/li&gt;
 &lt;li&gt;amend motion vectors: rot adjusted by diff of normal vectors between src and tgt; mag scaled by local size variation&lt;/li&gt;
