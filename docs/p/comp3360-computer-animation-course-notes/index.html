@@ -468,10 +468,18 @@ Due to the limited time for exam preparation, I did not include the part on impl
 </ol>
 <h2 id="facial-animation">Facial Animation</h2>
 <ol>
-<li>geometry and texture data, fit a generic face mesh into the range data using feature points</li>
-<li>skin, fat, muscles: mass-spring, need to preserve volume - push node upwards</li>
-<li>animation: with anatomical model, muscles activated to overlap markers</li>
-<li>cons of musculoskeletal model: quality depends on model (muscle details, soft materials, muscle activation); below: expression cloning, cal corr with RBF<img src="/p/comp3360-computer-animation-course-notes/express-clone.png"
+<li>
+<p>geometry and texture data, fit a generic face mesh into the range data using feature points</p>
+</li>
+<li>
+<p>skin, fat, muscles: mass-spring, need to preserve volume - push node upwards</p>
+</li>
+<li>
+<p>animation: with anatomical model, muscles activated to overlap markers</p>
+</li>
+<li>
+<p>cons of musculoskeletal model: quality depends on model (muscle details, soft materials, muscle activation); below: expression cloning, cal corr with RBF</p>
+<p><img src="/p/comp3360-computer-animation-course-notes/express-clone.png"
 	width="638"
 	height="466"
 	srcset="/p/comp3360-computer-animation-course-notes/express-clone_hu13b24fb2d0bebbb768444094c4810f7b_64474_480x0_resize_box_3.png 480w, /p/comp3360-computer-animation-course-notes/express-clone_hu13b24fb2d0bebbb768444094c4810f7b_64474_1024x0_resize_box_3.png 1024w"
@@ -482,17 +490,38 @@ Due to the limited time for exam preparation, I did not include the part on impl
 		data-flex-grow="136"
 		data-flex-basis="328px"
 	
-></li>
-<li>amend motion vectors: rot adjusted by diff of normal vectors between src and tgt; mag scaled by local size variation</li>
-<li>deformation transfer: mesh-based, can do non-rigid deform; first cal deform for every src triangle, then cal mapping from src to tgt, apply deform to tgt triangles</li>
-<li>this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j \norm{S_{s_j}-T_{t_j}}^2$</li>
-<li>photometric cap: find 3D location with stereo vision, normal vectors added as details</li>
-<li>blendshapes: face ik - $\min\sum(c_f-c&rsquo;<em>f)^2$ subject to $\sum c_fs</em>{l,f}=p_l$ and $\sum c_f$=1</li>
-<li>impossible hard constraints $\to$ unstable results; sol: change $p_l$ to soft and min diff</li>
-<li>local control to create more, e.g. asymmetric expressions not from symmetric</li>
-<li>digital emily: take img under diff lighting, create reflectance model $\to$ polarization, reconstruct 3D geometry, produce facial rig, create animation</li>
-<li>diffuse (directional, no dep on cam angle) $I_pk_d\cos\theta$+ specular (highlights, no dep on color) $I_pk_s(\cos\alpha)^n$ reflection</li>
-<li>parallel polarizer passes specular + part diffuse; cross passes part diffuse</li>
+></p>
+</li>
+<li>
+<p>amend motion vectors: rot adjusted by diff of normal vectors between src and tgt; mag scaled by local size variation</p>
+</li>
+<li>
+<p>deformation transfer: mesh-based, can do non-rigid deform; first cal deform for every src triangle, then cal mapping from src to tgt, apply deform to tgt triangles</p>
+</li>
+<li>
+<p>this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j \norm{S_{s_j}-T_{t_j}}^2$</p>
+</li>
+<li>
+<p>photometric cap: find 3D location with stereo vision, normal vectors added as details</p>
+</li>
+<li>
+<p>blendshapes: face ik - $\min\sum(c_f-c&rsquo;<em>f)^2$ subject to $\sum c_fs</em>{l,f}=p_l$ and $\sum c_f$=1</p>
+</li>
+<li>
+<p>impossible hard constraints $\to$ unstable results; sol: change $p_l$ to soft and min diff</p>
+</li>
+<li>
+<p>local control to create more, e.g. asymmetric expressions not from symmetric</p>
+</li>
+<li>
+<p>digital emily: take img under diff lighting, create reflectance model $\to$ polarization, reconstruct 3D geometry, produce facial rig, create animation</p>
+</li>
+<li>
+<p>diffuse (directional, no dep on cam angle) $I_pk_d\cos\theta$+ specular (highlights, no dep on color) $I_pk_s(\cos\alpha)^n$ reflection</p>
+</li>
+<li>
+<p>parallel polarizer passes specular + part diffuse; cross passes part diffuse</p>
+</li>
 </ol>
 
 </section>
