@@ -6,7 +6,15 @@
         <description>Recent content on Ciel的博客网站</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>用Python和OpenGL做皮套~一些记录</title>
+        <link>https://wwwCielwww.github.io/zh-cn/p/%E7%94%A8python%E5%92%8Copengl%E5%81%9A%E7%9A%AE%E5%A5%97~%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</link>
+        <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://wwwCielwww.github.io/zh-cn/p/%E7%94%A8python%E5%92%8Copengl%E5%81%9A%E7%9A%AE%E5%A5%97~%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Chinese Test</title>
         <link>https://wwwCielwww.github.io/zh-cn/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>

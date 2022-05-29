@@ -3,6 +3,7 @@ title: COMP3270 Artificial Intelligence Course Notes
 date: 2022-05-11
 categories: ["Course Notes", "Artificial Intelligence"]
 math: true
+slug: comp3270
 ---
 
 The post gives some keypoints on the course content of COMP3270 Artificial Intelligence @HKU, 2021-22 semester 2. It can be used as a directional material for those who are interested in (the more traditional side of) AI, or for revision purposes to future attendants of this course.
@@ -102,7 +103,7 @@ The post gives some keypoints on the course content of COMP3270 Artificial Intel
 
 ## Bayes Nets
 
-1. conditional independence: d-separation![](/assets/img/comp3270/d-sep.png)
+1. conditional independence: d-separation![](d-sep.png)
 
 ## NLP
 

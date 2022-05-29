@@ -4,6 +4,7 @@ date: 2022-05-16
 categories: "Course Notes"
 tags: ["Animation"]
 math: true
+slug: comp3360
 ---
 
 The post gives some keypoints on the course content of COMP3360 Computer Animation @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.

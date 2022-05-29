@@ -4,6 +4,7 @@ date: 2022-05-15
 categories: "Course Notes"
 tags: ["Computer Organization"]
 math: true
+slug: comp2120
 ---
 
 The post gives some keypoints on the course content of COMP2120 Computer Organization @HKU, 2021-22 semester 2. Since I wrote it as the cheat sheet for attending the final exam, some abbreviations for words (both technical and non-technical) were used, which might not be clear. You can also expect some strange formatting.
