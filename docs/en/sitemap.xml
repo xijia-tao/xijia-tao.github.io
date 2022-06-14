@@ -20,6 +20,24 @@
                 href="https://wwwCielwww.github.io/"
                 />
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://wwwCielwww.github.io/zh-cn/content/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://wwwCielwww.github.io/ar/content/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://wwwCielwww.github.io/content/"
+                />
+  </url><url>
     <loc>https://wwwCielwww.github.io/categories/</loc>
     <lastmod>2022-05-20T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -38,7 +56,19 @@
                 href="https://wwwCielwww.github.io/categories/"
                 />
   </url><url>
+    <loc>https://wwwCielwww.github.io/categories/cryptography/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/crypto/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/p/crypto/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/tags/japanese/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/jpn/</loc>
     <lastmod>2022-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/p/jpn/</loc>
@@ -86,11 +116,17 @@
     <loc>https://wwwCielwww.github.io/tags/animation/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/comp3360/</loc>
+    <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/comp3360/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/categories/course-notes/</loc>
     <lastmod>2022-05-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/comp2120/</loc>
+    <lastmod>2022-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/p/comp2120/</loc>
     <lastmod>2022-05-15T00:00:00+00:00</lastmod>
@@ -101,8 +137,14 @@
     <loc>https://wwwCielwww.github.io/categories/artificial-intelligence/</loc>
     <lastmod>2022-05-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/comp3270/</loc>
+    <lastmod>2022-05-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/comp3270/</loc>
     <lastmod>2022-05-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/page/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
@@ -129,6 +171,9 @@
     <loc>https://wwwCielwww.github.io/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/markdown-syntax/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/markdown-syntax-guide/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -144,11 +189,27 @@
     <loc>https://wwwCielwww.github.io/tags/privacy/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/rich-content/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/rich-content/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/tags/shortcodes/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/placeholder-text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://wwwCielwww.github.io/ar/content/post/placeholder-text/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://wwwCielwww.github.io/content/post/placeholder-text/"
+                />
   </url><url>
     <loc>https://wwwCielwww.github.io/p/placeholder-text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
@@ -185,14 +246,33 @@
     <loc>https://wwwCielwww.github.io/tags/text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/math-typesetting/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/math-typesetting/</loc>
     <lastmod>2019-03-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wwwCielwww.github.io/tags/emoji/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/post/emoji-support/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wwwCielwww.github.io/p/emoji-support/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/page/about/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://wwwCielwww.github.io/zh-cn/content/page/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://wwwCielwww.github.io/content/page/about/"
+                />
   </url><url>
     <loc>https://wwwCielwww.github.io/about/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
@@ -207,8 +287,14 @@
                 href="https://wwwCielwww.github.io/about/"
                 />
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/page/links/</loc>
+  </url><url>
     <loc>https://wwwCielwww.github.io/links/</loc>
   </url><url>
+    <loc>https://wwwCielwww.github.io/content/page/search/</loc>
+  </url><url>
     <loc>https://wwwCielwww.github.io/search/</loc>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/content/categories/test/</loc>
   </url>
 </urlset>
