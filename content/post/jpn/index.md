@@ -8,7 +8,7 @@ slug: jpn
 
 This is where I take notes when learning Japanese. Sources are acknowledged in the beginning.
 
-Source: YouTube, [JapanesePod101.com](https://www.youtube.com/watch?v=8YV8KmfBbBM) [^], Duolingo [*]
+Source: YouTube, [JapanesePod101.com](https://www.youtube.com/watch?v=8YV8KmfBbBM) [^], Duolingo [*], other source [!]
 
 ## Day 1^
 
@@ -150,7 +150,7 @@ Japanese uses different verbs to talk about playing different kinds of musical i
 | ピアノを**弾きます**。 | I **play** the piano.  |
 | ギターを**弾きます**。 | I **play** the guitar. |
 
-## Day 5
+## Day 5*
 
 #### Isn't it?
 
@@ -211,3 +211,41 @@ In this skill, you will encounter words that can modify the severity of your sen
 | Japanese                 | English                      |
 | :----------------------- | :--------------------------- |
 | カレーが**少ないです**。 | There is **not much** curry. |
+
+## Day 6
+
+### Difference between を and お[!](https://www.italki.com/post/question-136705?hl=ja)[!](https://www.reddit.com/r/japanese/comments/jx9csx/the_difference_between_%E3%81%8A_and_%E3%82%92/)
+
+を is a particle for direct objects, and is used as just that. Maybe in historical hiragana, を may be used (such as 男, which has the historical reading of [をとこ]. Otherwise, it isn't ever used in the pronunciation of any modern Japanese word, mainly because the Japanese got to a point where the "w" in "wo" (That's the more accurate romanization of the kana) was not able to be pronounced.  
+
+私はテレビを見て居ます。[わたしはテレビを見ています。] translates into "I am watching TV." を is the direct object marker, proceeding テレビ, thus defining what the action (見て居ます) was directed towards, which was the television. It can also be used to indicate the moving out of a place (contrast with に), or the moving through a place. Example: 
+
+- 公園を出ます。（こえんをでます。）means "(I) exited out of the park", or alternatively "(I) left the park."  
+
+- 公園を歩きました。（こうえんをあるきました。）means, "I walked through the park." 
+
+On the other hand, "o" or "go" (お/ご, respectively), is used as an honorific for words. There are words that are embellished when the prefix is used (ex. おすし), and then there are words that NEED to be embellished (ex. おもちゃ, which means toy). I believe these are also the words that CAN go unembellished, but would otherwise make you sound ill-bred, rude, or even a drunkard (お金 「おかね」 is ALWAYS usually said as just that, not just 「金｣). Then, you have words whose meanings CHANGE when the prefix is used (ex. [お中] means "stomach", while [中] by itself means "middle" or "center".）を is ALWAYS used as a particle, and therefore it's katakana equivalent ヲ is seldom used. Except for certain instances, お and ご are optional and primarily embellish words that you sound more polite/formal/humble. Those two aforementioned kana will NEVER be used as particles.
+
+---
+
+The hiragana character を originally represented the sound 'wo', however the pronunciation in modern Japanese has almost entirely dropped the 'w' part and now sounds basically like 'o'. Most Japanese speakers will use this pronunciation most of the time, so if you're just starting out it's safe to always go with this pronunciation. This character is almost exclusively used as a particle in modern Japanese (that is, it goes after a word to show that the word is the object of a verb).
+
+As you get more proficient in listening you might notice that occasionally people pronounce it with that 'w' sound (although it's a little different than an English 'w' sound). The most common times to hear it are in songs or speeches, or other occasions when people are trying to enunciate extremely clearly or differently from everyday speech. There are also some people who just pronounce it that way all the time, and some who pronounce it that way some of the time.
+
+The difference between は and を is that the pronunciation of は depends on it's function in the sentence. The 'wa' pronunciation is used when it is a particle (marking the topic of the sentence) and the 'ha' pronunciation is used when it is just a regular part of a word, for example in 花 (はな), meaning flower. を's pronunciation doesn't really change, but when it does it depends on the occasion or person, rather than the part of speech. を is, for all intents and purposes, only used in one way, as an object marker, and you will have no problems just pronouncing it 'o' all the time, you don't need to remember any special rules.
+
+### 助詞 joshin particle
+
+- は wa - topic (as for), contrast
+
+- が ga - specify (subject), unknown subject, new information
+
+- を o - object
+
+- に ni - to; location in/at which sth. exist; specific time
+
+- へ e - to, towards, direction
+
+- で de - by means of; location in/at which the action occurs/is done; group
+
+  
