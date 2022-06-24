@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Physics on Ciel&#39;s blog website &lt;3</title>
+        <link>https://wwwCielwww.github.io/categories/physics/</link>
+        <description>Recent content in Physics on Ciel&#39;s blog website &lt;3</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 24 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/categories/physics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>A Compilation of Physics Simulation Code (Simple)</title>
+        <link>https://wwwCielwww.github.io/p/phy-sim/</link>
+        <pubDate>Fri, 24 Jun 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://wwwCielwww.github.io/p/phy-sim/</guid>
+        <description>&lt;p&gt;Put HTML files under either &lt;code&gt;content&lt;/code&gt; or &lt;code&gt;static&lt;/code&gt; folder.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
