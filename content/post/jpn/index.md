@@ -13,7 +13,7 @@ Source: YouTube, [JapanesePod101.com](https://www.youtube.com/watch?v=8YV8KmfBbB
 ## Day 1^
 
 - Japanese is a 'mora-timed' language; syllables are pronounced equally.
-- Japanese characters can represent a vowel, a consonant and a vowel or a single consonant sound.
+- Japanese characters can represent a vowel, a consonant and a vowel or a single consonant sound. 
 - Word order: subject, object, verb, or SOV
 - topic-prominent language
   - topic is the focus; usually omits the subject
