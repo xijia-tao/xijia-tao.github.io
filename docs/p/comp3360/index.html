@@ -499,13 +499,13 @@ Due to the limited time for exam preparation, I did not include the part on impl
 <p>deformation transfer: mesh-based, can do non-rigid deform; first cal deform for every src triangle, then cal mapping from src to tgt, apply deform to tgt triangles</p>
 </li>
 <li>
-<p>this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j \norm{S_{s_j}-T_{t_j}}^2$</p>
+<p>this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j\Vert S_{s_j}-T_{t_j}\Vert^2$</p>
 </li>
 <li>
 <p>photometric cap: find 3D location with stereo vision, normal vectors added as details</p>
 </li>
 <li>
-<p>blendshapes: face ik - $\min\sum(c_f-c&rsquo;<em>f)^2$ subject to $\sum c_fs</em>{l,f}=p_l$ and $\sum c_f$=1</p>
+<p>blendshapes: face ik - $\min\sum(c_f-c\prime_f)^2$ subject to $\sum c_fs_{l,f}=p_l$ and $\sum c_f$=1</p>
 </li>
 <li>
 <p>impossible hard constraints $\to$ unstable results; sol: change $p_l$ to soft and min diff</p>

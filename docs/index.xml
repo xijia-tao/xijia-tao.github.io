@@ -974,13 +974,13 @@ For example, “バタン (batan)” is the sound of something shutting or closi
 &lt;p&gt;deformation transfer: mesh-based, can do non-rigid deform; first cal deform for every src triangle, then cal mapping from src to tgt, apply deform to tgt triangles&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j \norm{S_{s_j}-T_{t_j}}^2$&lt;/p&gt;
+&lt;p&gt;this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j\Vert S_{s_j}-T_{t_j}\Vert^2$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;photometric cap: find 3D location with stereo vision, normal vectors added as details&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;blendshapes: face ik - $\min\sum(c_f-c&amp;rsquo;&lt;em&gt;f)^2$ subject to $\sum c_fs&lt;/em&gt;{l,f}=p_l$ and $\sum c_f$=1&lt;/p&gt;
+&lt;p&gt;blendshapes: face ik - $\min\sum(c_f-c\prime_f)^2$ subject to $\sum c_fs_{l,f}=p_l$ and $\sum c_f$=1&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;impossible hard constraints $\to$ unstable results; sol: change $p_l$ to soft and min diff&lt;/p&gt;

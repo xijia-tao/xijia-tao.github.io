@@ -137,18 +137,18 @@ Due to the limited time for exam preparation, I did not include the part on impl
 3. animation: with anatomical model, muscles activated to overlap markers
 
 4. cons of musculoskeletal model: quality depends on model (muscle details, soft materials, muscle activation); below: expression cloning, cal corr with RBF
-
+   
    ![](express-clone.png)
 
 5. amend motion vectors: rot adjusted by diff of normal vectors between src and tgt; mag scaled by local size variation
 
 6. deformation transfer: mesh-based, can do non-rigid deform; first cal deform for every src triangle, then cal mapping from src to tgt, apply deform to tgt triangles
 
-7. this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j \norm{S_{s_j}-T_{t_j}}^2$
+7. this leads to holes in result mesh as too many dof; solve by preserve consistency: $\min\sum_j\Vert S_{s_j}-T_{t_j}\Vert^2$
 
 8. photometric cap: find 3D location with stereo vision, normal vectors added as details
 
-9. blendshapes: face ik - $\min\sum(c_f-c'_f)^2$ subject to $\sum c_fs_{l,f}=p_l$ and $\sum c_f$=1
+9. blendshapes: face ik - $\min\sum(c_f-c\prime_f)^2$ subject to $\sum c_fs_{l,f}=p_l$ and $\sum c_f$=1
 
 10. impossible hard constraints $\to$ unstable results; sol: change $p_l$ to soft and min diff
 

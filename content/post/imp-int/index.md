@@ -3,6 +3,7 @@ title: Implicit Integration
 date: 2022-07-20
 categories: ["Physics"]
 slug: imp-int
+math: true
 ---
 
 ## Introduction
