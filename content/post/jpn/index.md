@@ -234,18 +234,125 @@ As you get more proficient in listening you might notice that occasionally peopl
 
 The difference between は and を is that the pronunciation of は depends on it's function in the sentence. The 'wa' pronunciation is used when it is a particle (marking the topic of the sentence) and the 'ha' pronunciation is used when it is just a regular part of a word, for example in 花 (はな), meaning flower. を's pronunciation doesn't really change, but when it does it depends on the occasion or person, rather than the part of speech. を is, for all intents and purposes, only used in one way, as an object marker, and you will have no problems just pronouncing it 'o' all the time, you don't need to remember any special rules.
 
-### 助詞 joshin particle
+### 助詞 joshin particles
 
 - は wa - topic (as for), contrast
-
 - が ga - specify (subject), unknown subject, new information
-
-- を o - object
-
+- を o - object, comes between an object and a verb to indicate an action. This is called the direct object marker. 
 - に ni - to; location in/at which sth. exist; specific time
-
 - へ e - to, towards, direction
-
 - で de - by means of; location in/at which the action occurs/is done; group
 
-  
+
+### More About と、や、の[!](https://bondlingo.tv/blog/ja/how-to-use-japanese-particles-%E3%81%A8-to-%E3%82%84-ya-and-%E3%81%AE-no/)
+
+**Introducing と**
+
+と (to) can be expressed or used in four ways. It can be used for making a list, asking a question, or to express performing an action with another person. Furthermore, と (to) can quote something a person said, as well as one’s own thoughts.
+
+**To make a list**
+
+The Japanese particle と (to) is generally used to express “and” when wanting to list two or more objects. In addition, と (to) can also be used after a certain person’s name, in order to indicate that you were with that certain person.
+
+Example
+
+> 卵と牛乳を買いました。
+> Tamago to gyunyu o kaimashita. 
+> I bought eggs and milk.
+
+> 友達と夕食を食べました。
+> Tomodachi to yuushoku o tabemashita.
+> I ate dinner with my friend.
+
+**To show a question**
+
+The Japanese particle と (to) can also be used to explain or show that the sentence before it, is a quotation. In some cases, this is a quotation that is usually used like quotations in English ( E.g. he said…”, she said…). In other cases, this is a “quotation” of someone or a certain person’s thoughts (e.g. I think that…). In addition, it can also be a poetic or metaphorical “quotation” of something that is not able to feel things.
+By adding the Japanese [particle](https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/) と (to), a sentence can become a quotation even if no [verb](https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/) for “said” or “thought” is utilized.
+
+Example
+
+```
+私は「うそだ」と言っていました。
+Watashi wa “uso da” to itte imashita.
+I said, “it’s a lie.”
+私は「うそだ」と思いました。
+Watashi wa “uso da” to omoimashita.
+I thought, “it’s a lie.”
+私は「うそだ」と笑いました。
+Watashi wa “uso da” to waraimashita.
+“It’s a lie,” I laughed.
+私は「うそだ」と分かっていました。
+Watashi wa “uso da” to wakatte imashita.
+I understood that it was a lie.
+```
+
+Note that, when the Japanese particle と (to) is used in a quotation-style sentence, whatever that is being quoted should be in short form. In addition, the だ (da) [the short form of です (desu)] ending should be included, if the last word of the quote is a noun or a *na-[adjective](https://bondlingo.tv/blog/category/japanese-language/japanese-adjectives/).
+
+*na-[adjective](https://bondlingo.tv/blog/category/japanese-language/japanese-adjectives/): [Conjugation](https://bondlingo.tv/blog/japanese-verb-conjugation-chart) is same as a noun.
+
+**To turn sound symbolic words into adverbs**
+
+When the Japanese [particle](https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/) と (to) is placed at the end of a sound symbolic word, it can turn that sound symbolic word into an ad[verb](https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/).
+For example, “バタン (batan)” is the sound of something shutting or closing with a bang. If the Japanese [particle](https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/) と (to) is added to the end of “バタン (batan)” it can then be used with a [verb](https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/).
+
+Example
+
+```
+彼女は窓をバタンと閉めました。
+Kanojyo wa mado o batan to shimemashita.
+She shut the window with a bang.
+花瓶がガシャンと割れた。
+Kabin ga gashan to wareta.
+The vase broke with a crash.
+```
+
+**To mean if/when**
+
+The Japanese [particle](https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/) と (to) can also be used to be defined as “if” or “when.” The Japanese language has many patterns for making conditional sentences. For example, if the Japanese [particle](https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/) と (to) is used for conditional sentences, the result will always occur when the condition occurs.
+
+Example
+
+```
+公園に行くと、いつも落ち着きます。
+Kouen ni iku to, itsumo ochitsuki masu.
+When I go to the park, I always feel calm.
+その花をかぐと、くしゃみが止まらない。
+Sono hana o kagu to, kushami ga tomaranai.
+If I smell that flower, I can not stop sneezing.
+```
+
+---
+
+**Introducing や**
+
+The Japanese particle や (ya) is similar to と (to), in which it links two or more items in a list. The key difference is that the や (ya) is vaguer than と (to). While the Japanese particle と (to) implies that a list is concise or complete, や (ya) implies that the list may be incomplete, or that the things listed could perhaps be examples.
+
+Example
+
+```
+パンや焼き菓子をよく作ります。
+Pan ya yakigashi o yoku tsukurimasu.
+I often make bread and baked sweets.
+```
+
+---
+
+**Introducing の**
+
+The Japanese particle の (no) is one of the most versatile particles in the Japanese grammar. Both informal and semi-formal Japanese, の (no) is used primarily to express a ownership. In informal Japanese, の (no) can also be placed at the end of a sentence to express a question or an explanation.
+
+Example
+
+```
+私の犬は小さくて白いです。
+Watashi no inu wa chiisakute shiroi desu
+My dog is small and white. 
+いつ京都に行くの？
+Itsu Kyoto ni iku no?
+When will you go to Kyoto?
+今、雨が降っているの。
+Ima, ame ga futte iru no.
+It’s raining outside right now. 
+```
+
+The last sentence implies that you are telling or explaining to the listener something that they did not already know.

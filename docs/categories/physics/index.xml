@@ -6,13 +6,113 @@
         <description>Recent content in Physics on Ciel&#39;s blog website &lt;3</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 24 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/categories/physics/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>A Compilation of Physics Simulation Code (Simple)</title>
-        <link>https://wwwCielwww.github.io/p/phy-sim/</link>
-        <pubDate>Fri, 24 Jun 2022 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/categories/physics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Implicit Integration</title>
+        <link>https://wwwCielwww.github.io/p/imp-int/</link>
+        <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://wwwCielwww.github.io/p/phy-sim/</guid>
-        <description>&lt;p&gt;Put HTML files under either &lt;code&gt;content&lt;/code&gt; or &lt;code&gt;static&lt;/code&gt; folder.&lt;/p&gt;
+        <guid>https://wwwCielwww.github.io/p/imp-int/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Recall the explicit sympletic Euler integrator&lt;/p&gt;
+&lt;p&gt;$$
+v(t+\Delta t)=v(t)+\Delta t\cdot M^{-1}f(x(t), t)\
+x(t+\Delta t)=x(t)+\Delta t\cdot v(t+\Delta t).
+$$&lt;/p&gt;
+&lt;p&gt;The implicit formuation is&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+v(t+\Delta t)=v(t)+\Delta t\cdot M^{-1}f(x(t+\Delta t), t+\Delta t)\
+x(t+\Delta t)=x(t)+\Delta t\cdot v(t+\Delta t). \tag{$\ast$}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;The only difference is that in the implicit version, forces are evaluated at $t+\Delta t$.&lt;/p&gt;
+&lt;h2 id=&#34;generic-solver&#34;&gt;Generic Solver&lt;/h2&gt;
+&lt;p&gt;A dynamic system for soft bodies can be represented by&lt;/p&gt;
+&lt;p&gt;$$
+K(x-x_0)+D(\dot{x})+M\ddot{x}=f_{ext},
+$$&lt;/p&gt;
+&lt;p&gt;where K := stiffness matrix, $x_0$ := rest state, D := damping matrix and M := mass matrix. Note that $M\ddot{x}$ represents some resultant force. Doing some algebraic manipulations will give us the force $f=f_{ext}-Kx+Kx_0-D\dot{x}$. Substituting this into $(\ast)$ and rearranging, we get&lt;/p&gt;
+&lt;p&gt;$$
+(M+\Delta t^2K+\Delta tD)v(t+\Delta t)=Mv(t)+\Delta t(-K(x(t)-x_0)+f_{ext}).
+$$&lt;/p&gt;
+&lt;p&gt;This is a linear system in the form $Ax=b$. Given $A$ and $b$, we easily find $x$, i.e. $v(t+\Delta t)$ here.&lt;/p&gt;
+&lt;h2 id=&#34;cloth-simulation&#34;&gt;Cloth Simulation&lt;/h2&gt;
+&lt;p&gt;For simplicity, we rewrite $(\ast)$ as follows. Assume a cloth in a 3D space has n nodes. Then $x,v\in\mathbb{R}^{3n},M\in\mathbb{R}^{3n\times3n}$.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+Mv^{t+1}=Mv^t+f(x^{t+1})\Delta t\
+x^{t+1}=x^t+v^{t+1}\Delta t
+\end{cases}\implies
+Mv^{t+1}=Mv^t+f(x^t+v^{t+1}\Delta t)\Delta t
+$$&lt;/p&gt;
+&lt;h3 id=&#34;newton-raphson-solver&#34;&gt;Newton-Raphson Solver&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The general way to solve our system is to use the Newton-Raphson method&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;start at a guess for the unknown $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iteratively improve this guess&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To this end, the equations are linearised at the current state and the resulting linear system is solved to find a better approximation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linearising at the current state&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+Mv^{t+1}&amp;amp;=Mv^t+[f(x^t)+\frac{\delta}{\delta x}f(x^t)\cdot(v^{t+1}\Delta t)]\Delta t\
+&amp;amp;=Mv^t+f(x^t)\Delta t+Kv^{t+1}\Delta t^2,
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;where $K$ is the Jacobian of the forces (aka stiffness matrix) $\in\mathbb{R}^{3n\times3n}$. It contains the derivatives of all 3n force components w.r.t. all 3n position components.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Per time step&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;linearise once&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;use the current velocities as initial guess $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rearranging gives&lt;/p&gt;
+&lt;p&gt;$$
+[M-K\Delta t^2]v^{t+1}=Mv^t+f(x^t)\Delta t.
+$$&lt;/p&gt;
+&lt;p&gt;Then the linear equation can be solved with e.g. &lt;em&gt;conjugate gradients&lt;/em&gt;, &lt;em&gt;Jacobi solver&lt;/em&gt;, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;implicit-integration-summary&#34;&gt;Implicit Integration Summary&lt;/h2&gt;
+&lt;p&gt;At each time step&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;K is set to zero&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;for each spring connecting node i and j&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;add 4 3x3 sub-matrices at positions (3i, 3i), (3i, 3j), (3j, 3i) and (3j, 3j) into global K&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;evaluate RHS vector b&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;solve linear system for $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;update positions x&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;actually-solving-axb--jacobi-method&#34;&gt;Actually Solving Ax=b | Jacobi Method&lt;/h2&gt;
 </description>
         </item>
         

@@ -6,7 +6,116 @@
         <description>Recent content on Ciel&#39;s blog website &lt;3</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 08 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Implicit Integration</title>
+        <link>https://wwwCielwww.github.io/p/imp-int/</link>
+        <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://wwwCielwww.github.io/p/imp-int/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Recall the explicit sympletic Euler integrator&lt;/p&gt;
+&lt;p&gt;$$
+v(t+\Delta t)=v(t)+\Delta t\cdot M^{-1}f(x(t), t)\
+x(t+\Delta t)=x(t)+\Delta t\cdot v(t+\Delta t).
+$$&lt;/p&gt;
+&lt;p&gt;The implicit formuation is&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+v(t+\Delta t)=v(t)+\Delta t\cdot M^{-1}f(x(t+\Delta t), t+\Delta t)\
+x(t+\Delta t)=x(t)+\Delta t\cdot v(t+\Delta t). \tag{$\ast$}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;The only difference is that in the implicit version, forces are evaluated at $t+\Delta t$.&lt;/p&gt;
+&lt;h2 id=&#34;generic-solver&#34;&gt;Generic Solver&lt;/h2&gt;
+&lt;p&gt;A dynamic system for soft bodies can be represented by&lt;/p&gt;
+&lt;p&gt;$$
+K(x-x_0)+D(\dot{x})+M\ddot{x}=f_{ext},
+$$&lt;/p&gt;
+&lt;p&gt;where K := stiffness matrix, $x_0$ := rest state, D := damping matrix and M := mass matrix. Note that $M\ddot{x}$ represents some resultant force. Doing some algebraic manipulations will give us the force $f=f_{ext}-Kx+Kx_0-D\dot{x}$. Substituting this into $(\ast)$ and rearranging, we get&lt;/p&gt;
+&lt;p&gt;$$
+(M+\Delta t^2K+\Delta tD)v(t+\Delta t)=Mv(t)+\Delta t(-K(x(t)-x_0)+f_{ext}).
+$$&lt;/p&gt;
+&lt;p&gt;This is a linear system in the form $Ax=b$. Given $A$ and $b$, we easily find $x$, i.e. $v(t+\Delta t)$ here.&lt;/p&gt;
+&lt;h2 id=&#34;cloth-simulation&#34;&gt;Cloth Simulation&lt;/h2&gt;
+&lt;p&gt;For simplicity, we rewrite $(\ast)$ as follows. Assume a cloth in a 3D space has n nodes. Then $x,v\in\mathbb{R}^{3n},M\in\mathbb{R}^{3n\times3n}$.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+Mv^{t+1}=Mv^t+f(x^{t+1})\Delta t\
+x^{t+1}=x^t+v^{t+1}\Delta t
+\end{cases}\implies
+Mv^{t+1}=Mv^t+f(x^t+v^{t+1}\Delta t)\Delta t
+$$&lt;/p&gt;
+&lt;h3 id=&#34;newton-raphson-solver&#34;&gt;Newton-Raphson Solver&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The general way to solve our system is to use the Newton-Raphson method&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;start at a guess for the unknown $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;iteratively improve this guess&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To this end, the equations are linearised at the current state and the resulting linear system is solved to find a better approximation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linearising at the current state&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+Mv^{t+1}&amp;amp;=Mv^t+[f(x^t)+\frac{\delta}{\delta x}f(x^t)\cdot(v^{t+1}\Delta t)]\Delta t\
+&amp;amp;=Mv^t+f(x^t)\Delta t+Kv^{t+1}\Delta t^2,
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;where $K$ is the Jacobian of the forces (aka stiffness matrix) $\in\mathbb{R}^{3n\times3n}$. It contains the derivatives of all 3n force components w.r.t. all 3n position components.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Per time step&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;linearise once&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;use the current velocities as initial guess $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rearranging gives&lt;/p&gt;
+&lt;p&gt;$$
+[M-K\Delta t^2]v^{t+1}=Mv^t+f(x^t)\Delta t.
+$$&lt;/p&gt;
+&lt;p&gt;Then the linear equation can be solved with e.g. &lt;em&gt;conjugate gradients&lt;/em&gt;, &lt;em&gt;Jacobi solver&lt;/em&gt;, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;implicit-integration-summary&#34;&gt;Implicit Integration Summary&lt;/h2&gt;
+&lt;p&gt;At each time step&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;K is set to zero&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;for each spring connecting node i and j&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;add 4 3x3 sub-matrices at positions (3i, 3i), (3i, 3j), (3j, 3i) and (3j, 3j) into global K&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;evaluate RHS vector b&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;solve linear system for $v^{t+1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;update positions x&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;actually-solving-axb--jacobi-method&#34;&gt;Actually Solving Ax=b | Jacobi Method&lt;/h2&gt;
+</description>
+        </item>
+        <item>
         <title>Music Theory</title>
         <link>https://wwwCielwww.github.io/p/music-th/</link>
         <pubDate>Fri, 08 Jul 2022 00:00:00 +0000</pubDate>
@@ -512,27 +621,167 @@
 &lt;p&gt;The hiragana character を originally represented the sound &amp;lsquo;wo&amp;rsquo;, however the pronunciation in modern Japanese has almost entirely dropped the &amp;lsquo;w&amp;rsquo; part and now sounds basically like &amp;lsquo;o&amp;rsquo;. Most Japanese speakers will use this pronunciation most of the time, so if you&amp;rsquo;re just starting out it&amp;rsquo;s safe to always go with this pronunciation. This character is almost exclusively used as a particle in modern Japanese (that is, it goes after a word to show that the word is the object of a verb).&lt;/p&gt;
 &lt;p&gt;As you get more proficient in listening you might notice that occasionally people pronounce it with that &amp;lsquo;w&amp;rsquo; sound (although it&amp;rsquo;s a little different than an English &amp;lsquo;w&amp;rsquo; sound). The most common times to hear it are in songs or speeches, or other occasions when people are trying to enunciate extremely clearly or differently from everyday speech. There are also some people who just pronounce it that way all the time, and some who pronounce it that way some of the time.&lt;/p&gt;
 &lt;p&gt;The difference between は and を is that the pronunciation of は depends on it&amp;rsquo;s function in the sentence. The &amp;lsquo;wa&amp;rsquo; pronunciation is used when it is a particle (marking the topic of the sentence) and the &amp;lsquo;ha&amp;rsquo; pronunciation is used when it is just a regular part of a word, for example in 花 (はな), meaning flower. を&amp;rsquo;s pronunciation doesn&amp;rsquo;t really change, but when it does it depends on the occasion or person, rather than the part of speech. を is, for all intents and purposes, only used in one way, as an object marker, and you will have no problems just pronouncing it &amp;lsquo;o&amp;rsquo; all the time, you don&amp;rsquo;t need to remember any special rules.&lt;/p&gt;
-&lt;h3 id=&#34;助詞-joshin-particle&#34;&gt;助詞 joshin particle&lt;/h3&gt;
+&lt;h3 id=&#34;助詞-joshin-particles&#34;&gt;助詞 joshin particles&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;は wa - topic (as for), contrast&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;が ga - specify (subject), unknown subject, new information&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;を o - object&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;に ni - to; location in/at which sth. exist; specific time&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;へ e - to, towards, direction&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;で de - by means of; location in/at which the action occurs/is done; group&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;は wa - topic (as for), contrast&lt;/li&gt;
+&lt;li&gt;が ga - specify (subject), unknown subject, new information&lt;/li&gt;
+&lt;li&gt;を o - object, comes between an object and a verb to indicate an action. This is called the direct object marker.&lt;/li&gt;
+&lt;li&gt;に ni - to; location in/at which sth. exist; specific time&lt;/li&gt;
+&lt;li&gt;へ e - to, towards, direction&lt;/li&gt;
+&lt;li&gt;で de - by means of; location in/at which the action occurs/is done; group&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;more-about-とやのhttpsbondlingotvblogjahow-to-use-japanese-particles-e381a8-to-e38284-ya-and-e381ae-no&#34;&gt;More About と、や、の&lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/ja/how-to-use-japanese-particles-%E3%81%A8-to-%E3%82%84-ya-and-%E3%81%AE-no/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;!&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Introducing と&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;と (to) can be expressed or used in four ways. It can be used for making a list, asking a question, or to express performing an action with another person. Furthermore, と (to) can quote something a person said, as well as one’s own thoughts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To make a list&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Japanese particle と (to) is generally used to express “and” when wanting to list two or more objects. In addition, と (to) can also be used after a certain person’s name, in order to indicate that you were with that certain person.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;卵と牛乳を買いました。
+Tamago to gyunyu o kaimashita. 
+I bought eggs and milk.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;友達と夕食を食べました。
+Tomodachi to yuushoku o tabemashita.
+I ate dinner with my friend.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;To show a question&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Japanese particle と (to) can also be used to explain or show that the sentence before it, is a quotation. In some cases, this is a quotation that is usually used like quotations in English ( E.g. he said…”, she said…). In other cases, this is a “quotation” of someone or a certain person’s thoughts (e.g. I think that…). In addition, it can also be a poetic or metaphorical “quotation” of something that is not able to feel things.
+By adding the Japanese &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;particle&lt;/a&gt; と (to), a sentence can become a quotation even if no &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;verb&lt;/a&gt; for “said” or “thought” is utilized.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;私は「うそだ」と言っていました。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Watashi wa “uso da” to itte imashita.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I said, “it’s a lie.”
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;私は「うそだ」と思いました。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Watashi wa “uso da” to omoimashita.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I thought, “it’s a lie.”
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;私は「うそだ」と笑いました。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Watashi wa “uso da” to waraimashita.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;“It’s a lie,” I laughed.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;私は「うそだ」と分かっていました。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Watashi wa “uso da” to wakatte imashita.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I understood that it was a lie.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Note that, when the Japanese particle と (to) is used in a quotation-style sentence, whatever that is being quoted should be in short form. In addition, the だ (da) [the short form of です (desu)] ending should be included, if the last word of the quote is a noun or a *na-&lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/category/japanese-language/japanese-adjectives/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adjective&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;*na-&lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/category/japanese-language/japanese-adjectives/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;adjective&lt;/a&gt;: &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/japanese-verb-conjugation-chart&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Conjugation&lt;/a&gt; is same as a noun.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To turn sound symbolic words into adverbs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When the Japanese &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;particle&lt;/a&gt; と (to) is placed at the end of a sound symbolic word, it can turn that sound symbolic word into an ad&lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;verb&lt;/a&gt;.
+For example, “バタン (batan)” is the sound of something shutting or closing with a bang. If the Japanese &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;particle&lt;/a&gt; と (to) is added to the end of “バタン (batan)” it can then be used with a &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summaryjapanese-verb-conjugation-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;verb&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;彼女は窓をバタンと閉めました。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Kanojyo wa mado o batan to shimemashita.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;She shut the window with a bang.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;花瓶がガシャンと割れた。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Kabin ga gashan to wareta.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The vase broke with a crash.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;To mean if/when&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Japanese &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;particle&lt;/a&gt; と (to) can also be used to be defined as “if” or “when.” The Japanese language has many patterns for making conditional sentences. For example, if the Japanese &lt;a class=&#34;link&#34; href=&#34;https://bondlingo.tv/blog/summary-9-most-frequently-used-japanese-particles-perfect-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;particle&lt;/a&gt; と (to) is used for conditional sentences, the result will always occur when the condition occurs.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;公園に行くと、いつも落ち着きます。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Kouen ni iku to, itsumo ochitsuki masu.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;When I go to the park, I always feel calm.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;その花をかぐと、くしゃみが止まらない。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sono hana o kagu to, kushami ga tomaranai.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;If I smell that flower, I can not stop sneezing.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Introducing や&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Japanese particle や (ya) is similar to と (to), in which it links two or more items in a list. The key difference is that the や (ya) is vaguer than と (to). While the Japanese particle と (to) implies that a list is concise or complete, や (ya) implies that the list may be incomplete, or that the things listed could perhaps be examples.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;パンや焼き菓子をよく作ります。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Pan ya yakigashi o yoku tsukurimasu.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;I often make bread and baked sweets.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Introducing の&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Japanese particle の (no) is one of the most versatile particles in the Japanese grammar. Both informal and semi-formal Japanese, の (no) is used primarily to express a ownership. In informal Japanese, の (no) can also be placed at the end of a sentence to express a question or an explanation.&lt;/p&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;私の犬は小さくて白いです。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Watashi no inu wa chiisakute shiroi desu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;My dog is small and white. 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;いつ京都に行くの？
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Itsu Kyoto ni iku no?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;When will you go to Kyoto?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;今、雨が降っているの。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Ima, ame ga futte iru no.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;It’s raining outside right now. 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The last sentence implies that you are telling or explaining to the listener something that they did not already know.&lt;/p&gt;
 </description>
         </item>
         <item>
