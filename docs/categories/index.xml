@@ -5,86 +5,13 @@
         <link>https://wwwCielwww.github.io/categories/</link>
         <description>Recent content in Categories on Ciel&#39;s blog website &lt;3</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://wwwCielwww.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Physics</title>
-        <link>https://wwwCielwww.github.io/categories/physics/</link>
-        <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/physics/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Music</title>
-        <link>https://wwwCielwww.github.io/categories/music/</link>
-        <pubDate>Fri, 08 Jul 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/music/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Cryptography</title>
-        <link>https://wwwCielwww.github.io/categories/cryptography/</link>
-        <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/cryptography/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Language</title>
-        <link>https://wwwCielwww.github.io/categories/language/</link>
-        <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/language/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Course Notes</title>
-        <link>https://wwwCielwww.github.io/categories/course-notes/</link>
-        <pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/course-notes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Artificial Intelligence</title>
-        <link>https://wwwCielwww.github.io/categories/artificial-intelligence/</link>
-        <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/artificial-intelligence/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>syntax</title>
-        <link>https://wwwCielwww.github.io/categories/syntax/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/syntax/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>themes</title>
-        <link>https://wwwCielwww.github.io/categories/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/themes/</guid>
-        <description></description>
-        </item>
-        <item>
+        <language>en-us</language><atom:link href="https://wwwCielwww.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Test</title>
         <link>https://wwwCielwww.github.io/categories/test/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://wwwCielwww.github.io/categories/test/</guid>
         <description>&lt;img src="https://wwwCielwww.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
-        </item>
-        <item>
-        <title>Test with whitespaces</title>
-        <link>https://wwwCielwww.github.io/categories/test-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://wwwCielwww.github.io/categories/test-with-whitespaces/</guid>
-        <description></description>
         </item>
         
     </channel>
