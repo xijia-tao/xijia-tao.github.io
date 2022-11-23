@@ -1,3 +1,6 @@
+# Change LaTex to MathJax
+# specifically, solve the problem of subscript
+
 import os
 import re
 import codecs
