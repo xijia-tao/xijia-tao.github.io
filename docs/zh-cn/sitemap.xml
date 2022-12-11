@@ -3,6 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://wwwCielwww.github.io/zh-cn/</loc>
+    <lastmod>2022-11-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -17,6 +18,22 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://wwwCielwww.github.io/zh-cn/"
+                />
+  </url><url>
+    <loc>https://wwwCielwww.github.io/zh-cn/p/js-interview/</loc>
+    <lastmod>2022-11-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wwwCielwww.github.io/zh-cn/post/</loc>
+    <lastmod>2022-11-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://wwwCielwww.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://wwwCielwww.github.io/zh-cn/post/"
                 />
   </url><url>
     <loc>https://wwwCielwww.github.io/zh-cn/categories/</loc>

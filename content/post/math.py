@@ -1,5 +1,6 @@
 # Change LaTex to MathJax
 # specifically, solve the problem of subscript
+# Note when writing, use /// for new lines and \* for * literately
 
 import os
 import re
@@ -19,6 +20,7 @@ def replace(txt, p, f):
     for m in math:
         if type(m) is tuple:
             m = m[0]
+        m = m.replace('|', '\mid ')
         if '_' not in m:
             results.append(m)
             continue
@@ -45,11 +47,13 @@ with codecs.open(CHECKLIST, 'r', 'utf-8') as f:
 for p in os.listdir(ROOT):
     if '.' in p or p in checklist:
         continue
-    input('Confirm to modify ' + p + '?')
+    a = input('Confirm to modify ' + p + '?')
+    if not a:
+        continue
 
     path = os.path.join(ROOT, p, 'index.md')
     if not os.path.exists(path):
-        print('no index.md in ' + dir)
+        print('no index.md in ' + path)
         continue
     with codecs.open(path, 'r', 'utf-8') as f:
         text = f.read()

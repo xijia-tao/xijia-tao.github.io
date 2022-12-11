@@ -80,29 +80,29 @@ R(\hat{f})\leq\min_{f\in\mathcal{F}}R(f)+\epsilon
 $$&lt;/p&gt;
 &lt;p&gt;$1-\delta\to$ probably correct, $\epsilon\to$ approximately correct, $\bar{n}\to$ sample complexity.&lt;/p&gt;
 &lt;h3 id=&#34;finite-function-class&#34;&gt;Finite Function Class&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Theorem&lt;/strong&gt; for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2|\mathcal{F}|}{\delta}$.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Theorem&lt;/strong&gt; for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Proof&lt;/em&gt;: taking the algorithm to be ERM (empirical risk minimization), apply Hoeffding&amp;rsquo;s inequality&lt;/p&gt;
 &lt;p&gt;$$
-P[|R(f)-R_n(f)|\geq\epsilon_0]\leq2e^{-2n\epsilon_0^2}.
+P[\mid R(f)-R_n(f)\mid \geq\epsilon_0]\leq2e^{-2n\epsilon_0^2}.
 $$&lt;/p&gt;
 &lt;p&gt;We cannot simply substitute $f=f_{erm}$ because the later is not fixed, but rather a random variable depending on $\mathcal{D}$. For finite $\mathcal{F}$,&lt;/p&gt;
 &lt;p&gt;$$
-\mathcal{P}[\bigcup_{f\in\mathcal{F}}{|R(f)-R_n(f)|&amp;gt;\epsilon_0}]\leq2|\mathcal{F}|e^{-2n\epsilon_0^2}
+\mathcal{P}[\bigcup_{f\in\mathcal{F}}{\mid R(f)-R_n(f)\mid &amp;gt;\epsilon_0}]\leq2\mid \mathcal{F}\mid e^{-2n\epsilon_0^2}
 $$&lt;/p&gt;
-&lt;p&gt;By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon_0^2}\log\frac{2|\mathcal{F}|}{\delta}$. Assume the probability $1-\delta$ event occurs, namely $|R(f)-R_n(f)|\leq\epsilon_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have&lt;/p&gt;
+&lt;p&gt;By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon_0^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$. Assume the probability $1-\delta$ event occurs, namely $\mid R(f)-R_n(f)\mid \leq\epsilon_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have&lt;/p&gt;
 &lt;p&gt;$$
 \begin{align*}
-R(f_{erm})-R(f^&lt;em&gt;)&amp;amp;=(R(f_{erm})-R_n(f_{erm}))+(R_n(f_{erm})-R_n(f^&lt;/em&gt;))+(R_n(f^&lt;em&gt;)-R(f^&lt;/em&gt;)) \
+R(f_{erm})-R(f^*)&amp;amp;=(R(f_{erm})-R_n(f_{erm}))+(R_n(f_{erm})-R_n(f^*))+(R_n(f^*)-R(f^*)) \\
 &amp;amp;\leq\epsilon_0+0+\epsilon_0=2\epsilon_0
 \end{align*}
 $$&lt;/p&gt;
-&lt;p&gt;Setting $\epsilon_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2|\mathcal{F}|}{\delta}$ .&lt;/p&gt;
+&lt;p&gt;Setting $\epsilon_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$ .&lt;/p&gt;
 &lt;h3 id=&#34;infinite-case--vc-dimension&#34;&gt;Infinite Case &amp;amp; VC Dimension&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Intuition&lt;/strong&gt; even with infinitely many hypotheses, there may be only finitely many effective hypotheses.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Definitions&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Growth function/shattering number $S_n(\mathcal{F})=\sup_{\boldsymbol{x}_1,\dots,\boldsymbol{x}_n}|{(f(\boldsymbol{x}_1),\dots,f(\boldsymbol{x}_n)):f\in\mathcal{F}}|$&lt;/p&gt;
+&lt;p&gt;Growth function/shattering number $S_n(\mathcal{F})=\sup_{\boldsymbol{x}_1,\dots,\boldsymbol{x}_n}\mid {(f(\boldsymbol{x}_1),\dots,f(\boldsymbol{x}_n)):f\in\mathcal{F}}\mid $&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;This is an integer between $1$ and $2^n$.&lt;/li&gt;
 &lt;/ul&gt;
@@ -114,7 +114,11 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;Sauer&amp;rsquo;s lemma&lt;/em&gt;: $S_n(\mathcal{F})\leq\sum_{i=1}^{d_{VC}}\begin{pmatrix}n\i\end{pmatrix}$. For $n\leq d_{VC},S_n(\mathcal{F})=2^n$. Otherwise, $S_n(\mathcal{F})\leq(\frac{d_{VC}}{n})^{d_{VC}}$. A slightly weaker bound is $S_n(\mathcal{F})\leq(n+1)^{d_{VC}}$.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sauer&amp;rsquo;s lemma&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;$$ 
+S_n(\mathcal{F})\leq\sum_{i=1}^{d_{VC}}\begin{pmatrix}n\\i\end{pmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;. For $n\leq d_{VC},S_n(\mathcal{F})=2^n$. Otherwise, $S_n(\mathcal{F})\leq(\frac{d_{VC}}{n})^{d_{VC}}$. A slightly weaker bound is $S_n(\mathcal{F})\leq(n+1)^{d_{VC}}$.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Theorem&lt;/strong&gt; if $d_{VC}&amp;lt;\infty$, then $\mathcal{F}$ is PAC-learnable under the 0-1 loss with sample complexity&lt;/p&gt;
 &lt;p&gt;$$
 \bar{n}(\epsilon,\delta)=C\cdot\frac{d_{VC}+\log\frac{1}{\epsilon}}{\epsilon^2}
@@ -137,6 +141,29 @@ $$&lt;/p&gt;
 &lt;p&gt;linear classifier w/ and w/o an offset in dimnension $d$: $d_{VC}=d$ or $d+1$&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;ch-11-unsupervised&#34;&gt;Ch 11. Unsupervised&lt;/h2&gt;
+&lt;h3 id=&#34;clustering&#34;&gt;Clustering&lt;/h3&gt;
+&lt;p&gt;Given the number of clusters $K$, clustering is the task of seeking a partition of the data set $\mathcal{D}_1\cup\dots\cup\mathcal{D}_K$, as well as an associated set of cluster centers $\boldsymbol{\mu},\dots,\boldsymbol{\mu}_K$, such that the sum of distances&lt;/p&gt;
+&lt;p&gt;$$
+J({\mathcal{D}_j}_{j=1}^K, {\mathcal{\mu}_j}_{j=1}^K)=\sum^K_{j=1}\sum_{\boldsymbol{x}\in\mathcal{D}_j}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}_j\mid \mid ^2
+$$&lt;/p&gt;
+&lt;p&gt;are minimized. This problem is NP-hard in general.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;K-means&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Minimize $J$ by alternatively fixing $\boldsymbol{\mu}_j$ and $\mathcal{D}_j$ until convergence.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\mathcal{D}_j={\boldsymbol{x}\in\mathcal{D}:j={\arg\min}_{j&amp;rsquo;=1,\dots,K}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}_{j&amp;rsquo;}\mid \mid ^2}$&lt;/li&gt;
+&lt;li&gt;$\boldsymbol{\mu}_j=\frac{1}{\mid \mathcal{D}_j}\sum_{\boldsymbol{x}\in\mathcal{D}_j}\boldsymbol{x}$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;cannot gaurantee the solution found is optimal, but since $J$ decreases after each iteration,  we must converge to a local minimum.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Problems&lt;/em&gt; tends to favor similar-size clusters; cannot detect clusters other than the ball-like ones&lt;/p&gt;
+&lt;h3 id=&#34;distribution-learning&#34;&gt;Distribution Learning&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Parametric&lt;/strong&gt; methods consider classes of distributions $p(\boldsymbol{x};\boldsymbol{\theta})$. The learning algorithm (MLE) finds some $\hat{\boldsymbol{\theta}}$, and the estimate of the distribution is $\hat{p}(\boldsymbol{x})=p(\boldsymbol{x};\hat{\boldsymbol{\theta}})$, i.e.,&lt;/p&gt;
+&lt;p&gt;$$
+\hat{\boldsymbol{\theta}}={\arg\max}_\theta\prod^n_{t=1}p(\boldsymbol{x}_t;\boldsymbol{\theta})
+$$&lt;/p&gt;
+&lt;p&gt;unbiased estimate: $\mathbb{E}[\hat{\boldsymbol{\theta}}]=\boldsymbol{\theta}^*$&lt;/p&gt;
+&lt;p&gt;compare with the supervised case: $p(y\mid \boldsymbol{x};\boldsymbol{\theta})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Non-parametric&lt;/strong&gt; methods: K-nearest neighbors (supervised), kernel density estimation (data point increase the density more in the nearby regions, like a smooth version of a histogram)&lt;/p&gt;
 </description>
         </item>
         

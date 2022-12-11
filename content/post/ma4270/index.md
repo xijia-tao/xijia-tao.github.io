@@ -73,30 +73,30 @@ $1-\delta\to$ probably correct, $\epsilon\to$ approximately correct, $\bar{n}\to
 
 ### Finite Function Class
 
-**Theorem** for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2\|\mathcal{F}\|}{\delta}$.
+**Theorem** for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2\\mid \mathcal{F}\\mid }{\delta}$.
 
 *Proof*: taking the algorithm to be ERM (empirical risk minimization), apply Hoeffding's inequality
 
 $$
-P[\|R(f)-R\_n(f)\|\geq\epsilon\_0]\leq2e^{-2n\epsilon\_0^2}.
+P[\\mid R(f)-R\_n(f)\\mid \geq\epsilon\_0]\leq2e^{-2n\epsilon\_0^2}.
 $$
 
 We cannot simply substitute $f=f\_{erm}$ because the later is not fixed, but rather a random variable depending on $\mathcal{D}$. For finite $\mathcal{F}$,
 
 $$
-\mathcal{P}[\bigcup\_{f\in\mathcal{F}}\{\|R(f)-R\_n(f)\|>\epsilon\_0\}]\leq2\|\mathcal{F}\|e^{-2n\epsilon\_0^2}
+\mathcal{P}[\bigcup\_{f\in\mathcal{F}}\{\\mid R(f)-R\_n(f)\\mid >\epsilon\_0\}]\leq2\\mid \mathcal{F}\\mid e^{-2n\epsilon\_0^2}
 $$
 
-By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon\_0^2}\log\frac{2\|\mathcal{F}\|}{\delta}$. Assume the probability $1-\delta$ event occurs, namely $|R(f)-R\_n(f)|\leq\epsilon\_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have
+By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon\_0^2}\log\frac{2\\mid \mathcal{F}\\mid }{\delta}$. Assume the probability $1-\delta$ event occurs, namely $\mid R(f)-R\_n(f)\mid \leq\epsilon\_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have
 
 $$
 \begin{align*}
-R(f\_{erm})-R(f^*)&=(R(f\_{erm})-R\_n(f\_{erm}))+(R\_n(f\_{erm})-R\_n(f^*))+(R\_n(f^*)-R(f^*)) \\
+R(f\_{erm})-R(f^\*)&=(R(f\_{erm})-R\_n(f\_{erm}))+(R\_n(f\_{erm})-R\_n(f^\*))+(R\_n(f^\*)-R(f^\*)) \\\
 &\leq\epsilon\_0+0+\epsilon\_0=2\epsilon\_0
 \end{align*}
 $$
 
-Setting $\epsilon\_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2|\mathcal{F}|}{\delta}$ .
+Setting $\epsilon\_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$ .
 
 ### Infinite Case & VC Dimension
 
@@ -104,7 +104,7 @@ Setting $\epsilon\_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=
 
 **Definitions**
 
-- Growth function/shattering number $S\_n(\mathcal{F})=\sup\_{\boldsymbol{x}\_1,\dots,\boldsymbol{x}\_n}\|\{(f(\boldsymbol{x}\_1),\dots,f(\boldsymbol{x}\_n)):f\in\mathcal{F}\}\|$
+- Growth function/shattering number $S\_n(\mathcal{F})=\sup\_{\boldsymbol{x}\_1,\dots,\boldsymbol{x}\_n}\\mid \{(f(\boldsymbol{x}\_1),\dots,f(\boldsymbol{x}\_n)):f\in\mathcal{F}\}\\mid $
   
   - This is an integer between $1$ and $2^n$.
 
@@ -112,7 +112,13 @@ Setting $\epsilon\_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=
   
   - A set of such $k$ points is said to be shattered by $\mathcal{F}$.
 
-*Sauer's lemma*: $S\_n(\mathcal{F})\leq\sum\_{i=1}^{d\_{VC}}\begin{pmatrix}n\\i\end{pmatrix}$. For $n\leq d\_{VC},S\_n(\mathcal{F})=2^n$. Otherwise, $S\_n(\mathcal{F})\leq(\frac{d\_{VC}}{n})^{d\_{VC}}$. A slightly weaker bound is $S\_n(\mathcal{F})\leq(n+1)^{d\_{VC}}$.
+*Sauer's lemma*: 
+
+$$ 
+S\_n(\mathcal{F})\leq\sum\_{i=1}^{d\_{VC}}\begin{pmatrix}n\\\i\end{pmatrix}
+$$
+
+. For $n\leq d\_{VC},S\_n(\mathcal{F})=2^n$. Otherwise, $S\_n(\mathcal{F})\leq(\frac{d\_{VC}}{n})^{d\_{VC}}$. A slightly weaker bound is $S\_n(\mathcal{F})\leq(n+1)^{d\_{VC}}$.
 
 **Theorem** if $d\_{VC}<\infty$, then $\mathcal{F}$ is PAC-learnable under the 0-1 loss with sample complexity
 
@@ -131,3 +137,40 @@ for some constant $C$. Conversely, if $d\_{VC}=\infty$, then $\mathcal{F}$ is no
 - rectangular classifier: $d\_{VC}=4$
 
 - linear classifier w/ and w/o an offset in dimnension $d$: $d\_{VC}=d$ or $d+1$
+
+## Ch 11. Unsupervised
+
+### Clustering
+
+Given the number of clusters $K$, clustering is the task of seeking a partition of the data set $\mathcal{D}\_1\cup\dots\cup\mathcal{D}\_K$, as well as an associated set of cluster centers $\boldsymbol{\mu},\dots,\boldsymbol{\mu}\_K$, such that the sum of distances
+
+$$
+J(\{\mathcal{D}\_j\}\_{j=1}^K, \{\mathcal{\mu}\_j\}\_{j=1}^K)=\sum^K\_{j=1}\sum\_{\boldsymbol{x}\in\mathcal{D}\_j}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}\_j\mid \mid ^2
+$$
+
+are minimized. This problem is NP-hard in general.
+
+**K-means**
+
+Minimize $J$ by alternatively fixing $\boldsymbol{\mu}\_j$ and $\mathcal{D}\_j$ until convergence.
+
+1. $\mathcal{D}\_j=\{\boldsymbol{x}\in\mathcal{D}:j={\arg\min}\_{j'=1,\dots,K}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}\_{j'}\mid \mid ^2\}$
+2. $\boldsymbol{\mu}\_j=\frac{1}{\mid \mathcal{D}\_j}\sum\_{\boldsymbol{x}\in\mathcal{D}\_j}\boldsymbol{x}$.
+
+cannot gaurantee the solution found is optimal, but since $J$ decreases after each iteration,  we must converge to a local minimum.
+
+*Problems* tends to favor similar-size clusters; cannot detect clusters other than the ball-like ones
+
+### Distribution Learning
+
+**Parametric** methods consider classes of distributions $p(\boldsymbol{x};\boldsymbol{\theta})$. The learning algorithm (MLE) finds some $\hat{\boldsymbol{\theta}}$, and the estimate of the distribution is $\hat{p}(\boldsymbol{x})=p(\boldsymbol{x};\hat{\boldsymbol{\theta}})$, i.e.,
+
+$$
+\hat{\boldsymbol{\theta}}={\arg\max}\_\theta\prod^n\_{t=1}p(\boldsymbol{x}\_t;\boldsymbol{\theta})
+$$
+
+unbiased estimate: $\mathbb{E}[\hat{\boldsymbol{\theta}}]=\boldsymbol{\theta}^*$
+
+compare with the supervised case: $p(y\mid \boldsymbol{x};\boldsymbol{\theta})$
+
+**Non-parametric** methods: K-nearest neighbors (supervised), kernel density estimation (data point increase the density more in the nearby regions, like a smooth version of a histogram)

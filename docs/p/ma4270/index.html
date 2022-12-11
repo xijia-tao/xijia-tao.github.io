@@ -314,7 +314,7 @@ AdaBoost $\boldsymbol{\hat{\theta}}_m=\arg\min_\theta\sum_{t:y_t\neq h(\boldsymb
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    4 minute read
                 </time>
             </div>
         
@@ -396,29 +396,29 @@ R(\hat{f})\leq\min_{f\in\mathcal{F}}R(f)+\epsilon
 $$</p>
 <p>$1-\delta\to$ probably correct, $\epsilon\to$ approximately correct, $\bar{n}\to$ sample complexity.</p>
 <h3 id="finite-function-class">Finite Function Class</h3>
-<p><strong>Theorem</strong> for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2|\mathcal{F}|}{\delta}$.</p>
+<p><strong>Theorem</strong> for any bounded loss function in $[0,1]$, any finite function class $\mathcal{F}$ is PAC-learnable with sample complexity $\bar{n}(\epsilon,\delta)=\frac{2}{\epsilon^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$.</p>
 <p><em>Proof</em>: taking the algorithm to be ERM (empirical risk minimization), apply Hoeffding&rsquo;s inequality</p>
 <p>$$
-P[|R(f)-R_n(f)|\geq\epsilon_0]\leq2e^{-2n\epsilon_0^2}.
+P[\mid R(f)-R_n(f)\mid \geq\epsilon_0]\leq2e^{-2n\epsilon_0^2}.
 $$</p>
 <p>We cannot simply substitute $f=f_{erm}$ because the later is not fixed, but rather a random variable depending on $\mathcal{D}$. For finite $\mathcal{F}$,</p>
 <p>$$
-\mathcal{P}[\bigcup_{f\in\mathcal{F}}{|R(f)-R_n(f)|&gt;\epsilon_0}]\leq2|\mathcal{F}|e^{-2n\epsilon_0^2}
+\mathcal{P}[\bigcup_{f\in\mathcal{F}}{\mid R(f)-R_n(f)\mid &gt;\epsilon_0}]\leq2\mid \mathcal{F}\mid e^{-2n\epsilon_0^2}
 $$</p>
-<p>By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon_0^2}\log\frac{2|\mathcal{F}|}{\delta}$. Assume the probability $1-\delta$ event occurs, namely $|R(f)-R_n(f)|\leq\epsilon_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have</p>
+<p>By setting the RHS to a target $\delta$, we find the sufficient $n$ as $\frac{1}{2\epsilon_0^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$. Assume the probability $1-\delta$ event occurs, namely $\mid R(f)-R_n(f)\mid \leq\epsilon_0$ for all $f\in\mathcal{F}$. Letting $f^*$ be the function that minimizes $R(f)$, we have</p>
 <p>$$
 \begin{align*}
-R(f_{erm})-R(f^<em>)&amp;=(R(f_{erm})-R_n(f_{erm}))+(R_n(f_{erm})-R_n(f^</em>))+(R_n(f^<em>)-R(f^</em>)) \
+R(f_{erm})-R(f^*)&amp;=(R(f_{erm})-R_n(f_{erm}))+(R_n(f_{erm})-R_n(f^*))+(R_n(f^*)-R(f^*)) \\
 &amp;\leq\epsilon_0+0+\epsilon_0=2\epsilon_0
 \end{align*}
 $$</p>
-<p>Setting $\epsilon_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2|\mathcal{F}|}{\delta}$ .</p>
+<p>Setting $\epsilon_0=\frac{\epsilon}{2}$ gives the desired bound, and yields $n=\frac{2}{\epsilon^2}\log\frac{2\mid \mathcal{F}\mid }{\delta}$ .</p>
 <h3 id="infinite-case--vc-dimension">Infinite Case &amp; VC Dimension</h3>
 <p><strong>Intuition</strong> even with infinitely many hypotheses, there may be only finitely many effective hypotheses.</p>
 <p><strong>Definitions</strong></p>
 <ul>
 <li>
-<p>Growth function/shattering number $S_n(\mathcal{F})=\sup_{\boldsymbol{x}_1,\dots,\boldsymbol{x}_n}|{(f(\boldsymbol{x}_1),\dots,f(\boldsymbol{x}_n)):f\in\mathcal{F}}|$</p>
+<p>Growth function/shattering number $S_n(\mathcal{F})=\sup_{\boldsymbol{x}_1,\dots,\boldsymbol{x}_n}\mid {(f(\boldsymbol{x}_1),\dots,f(\boldsymbol{x}_n)):f\in\mathcal{F}}\mid $</p>
 <ul>
 <li>This is an integer between $1$ and $2^n$.</li>
 </ul>
@@ -430,7 +430,11 @@ $$</p>
 </ul>
 </li>
 </ul>
-<p><em>Sauer&rsquo;s lemma</em>: $S_n(\mathcal{F})\leq\sum_{i=1}^{d_{VC}}\begin{pmatrix}n\i\end{pmatrix}$. For $n\leq d_{VC},S_n(\mathcal{F})=2^n$. Otherwise, $S_n(\mathcal{F})\leq(\frac{d_{VC}}{n})^{d_{VC}}$. A slightly weaker bound is $S_n(\mathcal{F})\leq(n+1)^{d_{VC}}$.</p>
+<p><em>Sauer&rsquo;s lemma</em>:</p>
+<p>$$ 
+S_n(\mathcal{F})\leq\sum_{i=1}^{d_{VC}}\begin{pmatrix}n\\i\end{pmatrix}
+$$</p>
+<p>. For $n\leq d_{VC},S_n(\mathcal{F})=2^n$. Otherwise, $S_n(\mathcal{F})\leq(\frac{d_{VC}}{n})^{d_{VC}}$. A slightly weaker bound is $S_n(\mathcal{F})\leq(n+1)^{d_{VC}}$.</p>
 <p><strong>Theorem</strong> if $d_{VC}&lt;\infty$, then $\mathcal{F}$ is PAC-learnable under the 0-1 loss with sample complexity</p>
 <p>$$
 \bar{n}(\epsilon,\delta)=C\cdot\frac{d_{VC}+\log\frac{1}{\epsilon}}{\epsilon^2}
@@ -453,6 +457,29 @@ $$</p>
 <p>linear classifier w/ and w/o an offset in dimnension $d$: $d_{VC}=d$ or $d+1$</p>
 </li>
 </ul>
+<h2 id="ch-11-unsupervised">Ch 11. Unsupervised</h2>
+<h3 id="clustering">Clustering</h3>
+<p>Given the number of clusters $K$, clustering is the task of seeking a partition of the data set $\mathcal{D}_1\cup\dots\cup\mathcal{D}_K$, as well as an associated set of cluster centers $\boldsymbol{\mu},\dots,\boldsymbol{\mu}_K$, such that the sum of distances</p>
+<p>$$
+J({\mathcal{D}_j}_{j=1}^K, {\mathcal{\mu}_j}_{j=1}^K)=\sum^K_{j=1}\sum_{\boldsymbol{x}\in\mathcal{D}_j}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}_j\mid \mid ^2
+$$</p>
+<p>are minimized. This problem is NP-hard in general.</p>
+<p><strong>K-means</strong></p>
+<p>Minimize $J$ by alternatively fixing $\boldsymbol{\mu}_j$ and $\mathcal{D}_j$ until convergence.</p>
+<ol>
+<li>$\mathcal{D}_j={\boldsymbol{x}\in\mathcal{D}:j={\arg\min}_{j&rsquo;=1,\dots,K}\mid \mid \boldsymbol{x}-\boldsymbol{\mu}_{j&rsquo;}\mid \mid ^2}$</li>
+<li>$\boldsymbol{\mu}_j=\frac{1}{\mid \mathcal{D}_j}\sum_{\boldsymbol{x}\in\mathcal{D}_j}\boldsymbol{x}$.</li>
+</ol>
+<p>cannot gaurantee the solution found is optimal, but since $J$ decreases after each iteration,  we must converge to a local minimum.</p>
+<p><em>Problems</em> tends to favor similar-size clusters; cannot detect clusters other than the ball-like ones</p>
+<h3 id="distribution-learning">Distribution Learning</h3>
+<p><strong>Parametric</strong> methods consider classes of distributions $p(\boldsymbol{x};\boldsymbol{\theta})$. The learning algorithm (MLE) finds some $\hat{\boldsymbol{\theta}}$, and the estimate of the distribution is $\hat{p}(\boldsymbol{x})=p(\boldsymbol{x};\hat{\boldsymbol{\theta}})$, i.e.,</p>
+<p>$$
+\hat{\boldsymbol{\theta}}={\arg\max}_\theta\prod^n_{t=1}p(\boldsymbol{x}_t;\boldsymbol{\theta})
+$$</p>
+<p>unbiased estimate: $\mathbb{E}[\hat{\boldsymbol{\theta}}]=\boldsymbol{\theta}^*$</p>
+<p>compare with the supervised case: $p(y\mid \boldsymbol{x};\boldsymbol{\theta})$</p>
+<p><strong>Non-parametric</strong> methods: K-nearest neighbors (supervised), kernel density estimation (data point increase the density more in the nearby regions, like a smooth version of a histogram)</p>
 
 </section>
 
@@ -680,6 +707,12 @@ $$</p>
         <li><a href="#pac-learning">PAC Learning</a></li>
         <li><a href="#finite-function-class">Finite Function Class</a></li>
         <li><a href="#infinite-case--vc-dimension">Infinite Case &amp; VC Dimension</a></li>
+      </ol>
+    </li>
+    <li><a href="#ch-11-unsupervised">Ch 11. Unsupervised</a>
+      <ol>
+        <li><a href="#clustering">Clustering</a></li>
+        <li><a href="#distribution-learning">Distribution Learning</a></li>
       </ol>
     </li>
   </ol>
