@@ -49,6 +49,3 @@ In this blog, you can expect me to write about various topics related to NLP and
 I hope that you will find this blog informative, engaging and inspiring. If you have any comments, questions or suggestions for me, please feel free to leave them below or contact me via email.
 
 Thank you for reading this introduction page of my personal blog website! Stay tuned for more posts!
-
-
-======
