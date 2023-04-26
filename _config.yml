@@ -85,8 +85,8 @@ author:
   bio              : "🍇🍏🍓🍋🥑🍅🍐🥭🍈🍎🥝🍊"
   location         : "Hong Kong"
   employer         :
-  pubmed           : ""
-  googlescholar    : ""
+  pubmed           : 
+  googlescholar    : 
   email            : "xjtao2333@connect.hku.hk"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -102,12 +102,12 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "https://www.linkedin.com/in/xijia-ciel-tao/" 
+  linkedin         : "xijia-ciel-tao" 
   orcid            : 
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            : "1176886514"
+  steam            : "__cielll__"
   tumblr           :
   twitter          : "xijia_tao"
   vine             :
