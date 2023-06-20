@@ -11,7 +11,7 @@ title                    : "Xijia's Homepage"
 title_separator          : "-"
 name                     : &name "Xijjia Tao"
 description              : &description "Homepage for Xijia Tao"
-url                      : https://wwwCielwww.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://xijia-tao.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -50,7 +50,7 @@ atom_feed:
   path                   : # blank (default) uses feed.xml
 
 # SEO Related
-google_site_verification :
+google_site_verification : ZVpUSikCeTdQq2vRua4goQJeM9KzTnWcGk59DQEhB8o
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
