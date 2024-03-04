@@ -81,12 +81,12 @@ analytics:
 # Site Author
 author:
   name             : "Xijia Tao"
-  avatar           : "profile.jpg"
-  bio              : "Year 4 undergraduate, incoming PhD student at HKU"
-  location         : ""
+  avatar           : "profile.png"
+  bio              : "🍇🍏🍓🍋🥑🍅🍐🥭🍈🍎🥝🍊"
+  location         : "Hong Kong"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=PeIV968AAAAJ"
+  googlescholar    : 
   email            : "xjtao2333@connect.hku.hk"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "xijia-tao"
+  github           : "wwwCielwww"
   google_plus      :
   keybase          :
   instagram        :
