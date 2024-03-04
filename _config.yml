@@ -57,7 +57,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : "xijia_tao"
 facebook:
   username               :
   app_id                 :
@@ -81,12 +81,12 @@ analytics:
 # Site Author
 author:
   name             : "Xijia Tao"
-  avatar           : "profile.png"
-  bio              : "🍇🍏🍓🍋🥑🍅🍐🥭🍈🍎🥝🍊"
-  location         : "Hong Kong"
+  avatar           : "profile.jpg"
+  bio              : "Year 4 undergraduate, incoming PhD student at HKU"
+  location         : ""
   employer         :
   pubmed           : 
-  googlescholar    : 
+  googlescholar    : "https://scholar.google.com/citations?hl=en&user=PeIV968AAAAJ"
   email            : "xjtao2333@connect.hku.hk"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "wwwCielwww"
+  github           : "xijia-tao"
   google_plus      :
   keybase          :
   instagram        :
