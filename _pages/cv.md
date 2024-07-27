@@ -9,4 +9,4 @@ redirect_from:
 
 {% include base_path %}
 
-View my CV in pdf [here](files/cv.pdf).
+View my CV in pdf [here]([https:/files/cv.pdf](https://xijia-tao.github.io/files/cv.pdf)).
