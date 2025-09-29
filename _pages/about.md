@@ -10,8 +10,25 @@ redirect_from:
 
 Hi there! I'm Xijia Tao (Ciel, or 陶熙佳).
 
-I recently graduated from the University of Hong Kong (HKU) with a major in Computer Science. This fall, I will embark on a new academic journey by starting a PhD. I don’t have a definitive research plan for my PhD yet, as the fast-paced nature of this field makes it challenging to pinpoint the most promising areas. However, I am open to opportunities and willing to experiment to identify the most impactful research topics in the long run.
+I am currently a year 2 PhD student at [HKUNLP](https://hkunlp.github.io/) lab. My recent research interests are multimodal deep research and diffusion large language models.
 
-Currently, I'm an intern at Zhipu AI, deeply immersed in the fascinating world of large language models (LLMs) and AI research. In my previous roles, I worked as a research assistant in the [HKU NLP Group](https://hkunlp.github.io/) under the guidance of [Prof. Lingpeng Kong](https://ikekonglp.github.io/). My focus has been on NLP, particularly the applications of LLMs in formal theorem proving and exploring safety issues in vision-language models (VLMs).
+## Publications
 
-Outside the tech bubble, I am a huge fan of cats and enjoy diving into various games. Feel free to join me in this exciting adventure as I continue exploring the realms of AI and beyond!
+**MMSearch-Plus: A Simple Yet Challenging Benchmark for Multimodal Browsing Agents** (2025)  
+***Xijia Tao***, Yihua Teng, Xinxing Su, Xinyu Fu, Jihao Wu, Chaofan Tao, Ziru Liu, Haoli Bai, Rui Liu, Lingpeng Kong  
+arXiv preprint arXiv:2508.21475
+
+**OmniPlay: Benchmarking Omni-Modal Models on Omni-Modal Game Playing** (2025)  
+Fuqing Bie, Shiyu Huang, ***Xijia Tao***, Zhiqin Fang, Leyi Pan, Junzhe Chen, Min Ren, Liuyu Xiang, Zhaofeng He  
+arXiv preprint arXiv:2508.04361
+
+**ImgTrojan: Jailbreaking Vision-Language Models with ONE Image** (2025)  
+***Xijia Tao***, Shuai Zhong, Lei Li, Qi Liu, Lingpeng Kong  
+*Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL 2025)*  
+[Paper](https://aclanthology.org/2025.naacl-long.360/)
+
+**Language Versatilists vs. Specialists: An Empirical Revisiting on Multilingual Transfer Ability** (2023)  
+Jiacheng Ye, ***Xijia Tao***, Lingpeng Kong  
+arXiv preprint arXiv:2306.06688
+
+[Google Scholar Profile](https://scholar.google.com/citations?hl=en&user=PeIV968AAAAJ)
