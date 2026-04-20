@@ -14,6 +14,11 @@ I am currently a year 2 PhD student at [HKUNLP](https://hkunlp.github.io/) lab. 
 
 ## Publications
 
+**[arXiv] Beyond Confidence: Adaptive and Coherent Decoding for Diffusion Language Models** (2025)  
+Kecheng Chen, Ziru Liu, ***Xijia Tao***, Hui Liu, Xinyu Fu, Suiyun Zhang, Dandan Tu, Lingpeng Kong, Rui Liu, Haoliang Li  
+arXiv preprint arXiv:2512.02044
+[Project page](https://tonyckc.github.io/CCD-DLM-Project/) | [Paper](https://arxiv.org/abs/2512.02044)
+
 **[ICLR 2026] MMSearch-Plus: A Simple Yet Challenging Benchmark for Multimodal Browsing Agents** (2025)  
 ***Xijia Tao***, Yihua Teng, Xinxing Su, Xinyu Fu, Jihao Wu, Chaofan Tao, Ziru Liu, Haoli Bai, Rui Liu, Lingpeng Kong  
 arXiv preprint arXiv:2508.21475
