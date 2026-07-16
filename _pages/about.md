@@ -14,6 +14,16 @@ I am currently a PhD student at the [HKUNLP](https://hkunlp.github.io/) lab. My 
 
 ## Publications
 
+**[arXiv] SoftSkill: Behavioral Compression for Contextual Adaptation** (2026)<br>
+***Xijia Tao***, Yihua Teng, Xinyu Fu, Ziru Liu, Kecheng Chen, Yuzhi Zhao, Suiyun Zhang, Rui Liu, Lingpeng Kong<br>
+arXiv preprint arXiv:2606.20333<br>
+[Paper](https://arxiv.org/abs/2606.20333)
+
+**[arXiv] Self-Distilled Trajectory-Aware Boltzmann Modeling: Bridging the Training-Inference Discrepancy in Diffusion Language Models** (2026)<br>
+Kecheng Chen, Ziru Liu, ***Xijia Tao***, Hui Liu, Yibing Liu, Xinyu Fu, Shi Wu, Suiyun Zhang, Dandan Tu, Lingpeng Kong, Rui Liu, Haoliang Li<br>
+arXiv preprint arXiv:2605.11854<br>
+[Paper](https://arxiv.org/abs/2605.11854)
+
 **[arXiv] Beyond Confidence: Adaptive and Coherent Decoding for Diffusion Language Models** (2025)  
 Kecheng Chen, Ziru Liu, ***Xijia Tao***, Hui Liu, Xinyu Fu, Suiyun Zhang, Dandan Tu, Lingpeng Kong, Rui Liu, Haoliang Li  
 arXiv preprint arXiv:2512.02044

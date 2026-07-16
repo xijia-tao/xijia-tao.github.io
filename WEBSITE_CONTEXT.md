@@ -12,10 +12,10 @@ The homepage currently describes two active research themes:
 - multimodal deep research / multimodal browsing agents
 - diffusion large language models
 
-The publication record also supplies longer-term context in vision-language
-model safety and multilingual transfer. These older directions should remain
-visible through the publication list, but should not automatically be promoted
-into the short current-research statement.
+The publication record also supplies context in agent skill compression,
+vision-language model safety, and multilingual transfer. These additional
+directions should remain visible through the publication list, but should not
+automatically be promoted into the short current-research statement.
 
 ## Public Content Inventory
 
@@ -23,13 +23,17 @@ The homepage (`_pages/about.md`) is the canonical visitor-facing overview. It
 contains a short biography followed by a reverse-chronological publication
 list:
 
-1. Beyond Confidence — diffusion-language-model decoding; arXiv 2512.02044
-2. MMSearch-Plus — multimodal browsing-agent benchmark; ICLR 2026 and arXiv
+1. SoftSkill — behavioral compression for contextual adaptation; arXiv
+   2606.20333
+2. Self-Distilled Trajectory-Aware Boltzmann Modeling — diffusion-language-model
+   post-training; arXiv 2605.11854
+3. Beyond Confidence — diffusion-language-model decoding; arXiv 2512.02044
+4. MMSearch-Plus — multimodal browsing-agent benchmark; ICLR 2026 and arXiv
    2508.21475
-3. OmniPlay — omni-modal game-playing benchmark; arXiv 2508.04361
-4. ImgTrojan — vision-language-model jailbreaking; NAACL 2025, ACL Anthology
+5. OmniPlay — omni-modal game-playing benchmark; arXiv 2508.04361
+6. ImgTrojan — vision-language-model jailbreaking; NAACL 2025, ACL Anthology
    2025.naacl-long.360
-5. Language Versatilists vs. Specialists — multilingual transfer; arXiv
+7. Language Versatilists vs. Specialists — multilingual transfer; arXiv
    2306.06688
 
 The homepage, not `_publications/`, is the primary publication list.
