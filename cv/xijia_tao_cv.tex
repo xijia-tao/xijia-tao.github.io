@@ -1,0 +1,114 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=0.62in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+
+\definecolor{accent}{HTML}{17365D}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  pdfauthor={Xijia Tao},
+  pdftitle={Xijia Tao -- Curriculum Vitae}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\small\color{gray}\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.25em,itemsep=1pt,topsep=2pt,parsep=0pt}
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0pt}{}[\vspace{-0.35em}\color{accent}\titlerule]
+\titlespacing*{\section}{0pt}{0.75em}{0.4em}
+
+\newcommand{\cvheading}[4]{%
+  \textbf{#1}\hfill #2\\[-1pt]
+  \textit{#3}\hfill\textit{#4}\par
+}
+\newcommand{\me}{\textbf{Xijia Tao}}
+\newcommand{\paper}[4]{%
+  \textbf{#1} \hfill #2\\[-1pt]
+  #3\\[-1pt]
+  \textit{#4}\par\vspace{0.15em}
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Xijia Tao}\\[3pt]
+  Hong Kong SAR \enspace$\vert$\enspace
+  \href{mailto:xjtao@cs.hku.hk}{xjtao@cs.hku.hk} \enspace$\vert$\enspace
+  \href{mailto:ciellltao@gmail.com}{ciellltao@gmail.com}\\[2pt]
+  +852 5467 9633 \enspace$\vert$\enspace +86 186 4115 5390 \enspace$\vert$\enspace
+  \href{https://xijia-tao.github.io}{Webpage} \enspace$\vert$\enspace
+  \href{https://scholar.google.com/citations?hl=en\&user=PeIV968AAAAJ}{Google Scholar} \enspace$\vert$\enspace
+  \href{https://github.com/xijia-tao}{GitHub} \enspace$\vert$\enspace
+  \href{https://www.linkedin.com/in/xijia-ciel-tao}{LinkedIn} \enspace$\vert$\enspace
+  \href{https://x.com/xijia_tao}{X}
+\end{center}
+
+\section{Research Interests}
+
+Multimodal deep research and browsing agents; diffusion language models; large language model reasoning and safety.
+
+\section{Education}
+
+\cvheading{The University of Hong Kong}{Hong Kong SAR}
+  {Ph.D. in Computer Science, HKU NLP Lab}{Sep 2024 -- Jun 2028 (expected)}
+
+\vspace{0.35em}
+\cvheading{The University of Hong Kong}{Hong Kong SAR}
+  {B.Eng. in Computer Science}{Sep 2020 -- Jun 2024}
+\begin{itemize}
+  \item Full-tuition scholarship for four years of undergraduate study; Dean's Honours List, Faculty of Engineering (2021--22).
+\end{itemize}
+
+\section{Research Experience}
+
+\cvheading{HKU NLP Lab, The University of Hong Kong}{Hong Kong SAR}
+  {Ph.D. Student}{Sep 2024 -- Present}
+\begin{itemize}
+  \item Develop benchmarks and methods for provenance-aware multimodal browsing agents, including MMSearch-Plus (ICLR 2026).
+  \item Study training and inference for diffusion language models, including adaptive decoding and trajectory-aware Boltzmann modeling.
+  \item Investigate behavioral compression of agent skills for contextual adaptation.
+\end{itemize}
+
+\vspace{0.25em}
+\cvheading{Zhipu AI}{}
+  {AI Research Intern}{Jul 2024 -- Oct 2024}
+\begin{itemize}
+  \item Developed methods for synthesizing domain-specific training data and evaluated data quality on reasoning benchmarks by training GLM-4-9B models.
+\end{itemize}
+
+\vspace{0.25em}
+\cvheading{HKU NLP Lab, The University of Hong Kong}{Hong Kong SAR}
+  {Research Assistant}{Sep 2021 -- Mar 2024}
+\begin{itemize}
+  \item Researched vision-language model safety, multilingual transfer, knowledge distillation, and pretrained language models for the legal domain.
+\end{itemize}
+
+\vspace{0.25em}
+\cvheading{Huawei Hong Kong Research Center}{Hong Kong SAR}
+  {Machine Learning Research Intern}{Jun 2023 -- Sep 2023}
+\begin{itemize}
+  \item Implemented multimodal networks in MindSpore for CUDA and Ascend environments and studied language--vision feature alignment for large generative models.
+\end{itemize}
+
+\section{Publications}
+
+\input{publications}
+
+\end{document}

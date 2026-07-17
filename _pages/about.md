@@ -24,9 +24,9 @@ Kecheng Chen, Ziru Liu, ***Xijia Tao***, Hui Liu, Yibing Liu, Xinyu Fu, Shi Wu, 
 arXiv preprint arXiv:2605.11854<br>
 [Paper](https://arxiv.org/abs/2605.11854)
 
-**[arXiv] Beyond Confidence: Adaptive and Coherent Decoding for Diffusion Language Models** (2025)  
+**[ICML 2026] Beyond Confidence: Adaptive and Coherent Decoding for Diffusion Language Models** (2026)  
 Kecheng Chen, Ziru Liu, ***Xijia Tao***, Hui Liu, Xinyu Fu, Suiyun Zhang, Dandan Tu, Lingpeng Kong, Rui Liu, Haoliang Li  
-arXiv preprint arXiv:2512.02044
+*The Forty-third International Conference on Machine Learning (ICML 2026)*  
 [Project page](https://tonyckc.github.io/CCD-DLM-Project/) | [Paper](https://arxiv.org/abs/2512.02044)
 
 **[ICLR 2026] MMSearch-Plus: Benchmarking Provenance-Aware Search for Multimodal Browsing Agents** (2026)<br>
